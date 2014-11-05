@@ -49,8 +49,8 @@ MongoClient.connect("mongodb://localhost:27017/ss_products", function(err, db) {
         
         app.get('/products',attachDB, function (req, res) {
             //console.log(req.db.collection('products').find());
-          //res.contentType('application/json');
-          var el = req.db.collection('products').find().toArray(function(err, items) {
+          //res.contentType('application/json');find({"IMAGE URL":{$ne:null}});
+          var el = req.db.collection('products').find({"Big Image":{$ne:""}}).toArray(function(err, items) {
               //console.log(items)
               res.send(items);
           })

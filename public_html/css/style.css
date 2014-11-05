@@ -5107,10 +5107,10 @@ width: 100%; left:0px!important; bottom:0px!important; margin-left:0px!important
 .fullwidthbanner-container:hover .tp-bullets.simplebullets.navbar{display:block;}
 .beta-banner:hover .tp-bullets.simplebullets.navbar{display:block;}
 
-.tp-leftarrow.navbar{background: url(../vendors/revolution-slider/assets/large_left.png) no-Repeat 0px 9px;
+.tp-leftarrow.navbar{background: url(../img/large_left.png) no-Repeat 0px 9px;
 width: 40px;
 height: 40px;}
-.tp-rightarrow.navbar{background: url(../vendors/revolution-slider/assets/large_right.png) no-Repeat -1px 9px;
+.tp-rightarrow.navbar{background: url(../img/large_right.png) no-Repeat -1px 9px;
 width: 40px;
 height: 40px;
 position:absolute; right:15px;top:0px;}

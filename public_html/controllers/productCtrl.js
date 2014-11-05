@@ -16,7 +16,7 @@ angular.module('myApp.productCtrl', ['ngRoute'])
     $scope.firstName= "John";
     $scope.lastName= "Doe";
     
-    $http.get("http://localhost:3000/products")
+    $http.get("http://localhost:3000/products?t=11")
     .success(function(response) {
             var raw = response;
             
@@ -25,7 +25,7 @@ angular.module('myApp.productCtrl', ['ngRoute'])
                
                 list.push(raw.splice(0,4));
             }
-    
+            console.log(list);
             $scope.productList  = list;
         }
      );
