@@ -16,7 +16,7 @@ angular.module('myApp.productCtrl', ['ngRoute'])
     $scope.firstName= "John";
     $scope.lastName= "Doe";
     
-    $http.get("http://localhost:3000/products?t=11")
+    $http.get("/products?t=11")
     .success(function(response) {
             var raw = response;
             
