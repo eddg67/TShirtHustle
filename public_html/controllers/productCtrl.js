@@ -15,6 +15,7 @@ angular.module('myApp.productCtrl', ['ngRoute'])
 .controller('productCtrl', function($scope,$http) {
     $scope.firstName= "John";
     $scope.lastName= "Doe";
+    $scope.templates = [{ name: 'templateCC', url: 'views/productList.html'}];
     
     $http.get("/products?t=11")
     .success(function(response) {

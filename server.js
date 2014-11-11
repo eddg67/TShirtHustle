@@ -8,6 +8,7 @@
 var http = require('http'),
     express = require('express'),
     path = require('path'),
+    bodyParser = require('body-parser'),
     config = require('./config')();
     
  var MongoClient = require('mongodb').MongoClient;
@@ -21,16 +22,12 @@ var http = require('http'),
 var app = express();
 app.set('port', config.port|| 3000); 
 app.use(express.static(path.join(__dirname, 'public_html')));
-
-//app.set('views', '/Users/e/Documents/Projects/TShirtHustle/views');
-//app.set('view engine', "jade");
-//app.engine('jade', require('jade').__express);
-
-// Make our db accessible to our router
-/*app.use(function(req,res,next){
-    req.db = db;
-    next();
-});*/
+app.use(express.json());       // to support JSON-encoded bodies
+app.use(express.urlencoded()); // to support URL-encoded bodies
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+}));
 
 // Connect to the db
 MongoClient.connect("mongodb://localhost:27017/ss_products", function(err, db) {
@@ -45,6 +42,11 @@ MongoClient.connect("mongodb://localhost:27017/ss_products", function(err, db) {
         
         app.get('/',attachDB, function (req, res) {
           res.sendfile('index.html');
+        });
+        
+        app.get('/contact',attachDB,function(req,res){
+            var email = req.body.email;
+           res.send(email);
         });
         
         app.get('/products',attachDB, function (req, res) {
