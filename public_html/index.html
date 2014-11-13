@@ -63,8 +63,8 @@
 		<div class="header-body">
 			<div class="container beta-relative">
 				<div class="pull-left">
-					<a href="index.html" id="logo">TSHIRT HUSTLE</a>
-					<span class="slogan">Shop Top TShirt designs from top online retailers!</span>
+					<a href="index.html" id="logo"><img src="img/logo.png" alt="TSHIRT HUSTLE Funny cool Tshirts"></a>
+                                        <span class="slogan"><h6>Shop Top Tshirt retailers!</h6></span>
 				</div>
 				<div class="pull-right beta-components space-left ov">
 					<div class="space10">&nbsp;</div>
@@ -123,25 +123,35 @@
 	<div class="container">
 		<div id="content">
     <div class="main-content">
+<!--
+    <div class="fullwidthbanner-container" ng-include="'views/topSlider.html'"></div> 
+				<div class="space10">&nbsp;</div> 
+<!--slider-->
+             <h4>Special Offers</h4>
+            <div class="dg" ng-include="'views/topBanner.html'">
+                    
+            </div>
+                                
+<div class="space50">&nbsp;</div>
+                                <h4>Top Products</h4>
+            <div class="beta-products-list" ng-controller="productCtrl">
+                <div ng-include="templates[0].url"></div>	     		
+            </div> <!-- .beta-products-list -->
+    </div> <!-- .maincontent -->		
+				
+<div class="space50">&nbsp;</div>
 
-    <div class="fullwidthbanner-container" ng-include="'views/topSlider.html'"></div> <!--slider-->
-
-				<div class="space10">&nbsp;</div>
-
-            <div class="dg">
-                    <div class="col-4 wow fadeInDown">
+<div class="dg" >
+    <div class="col-4 wow ">
                             <div class="beta-banner">
-                                <a target="_blank" href="http://www.shareasale.com/r.cfm?b=494487&amp;u=1014588&amp;m=14592&amp;urllink=&amp;afftrack=">
-                                    <img src="http://static.shareasale.com/image/14592/growbo.jpg" border="0" alt="CrazyDogTshirts.com!" />
-                                </a>
-
-                                    
+                            <iframe width='286' height='125' src='http://www.sunfrogshirts.com/widget/sfwidget_sm.cfm?25110&ct=19,24,35,12,71,20,62,13,11,&key=&btn=1&btntxt=Buy Now' frameborder='0' allowfullscreen scrolling='no'></iframe>
+                                  
                             </div>
                     </div>
-                    <div class="col-4 wow fadeInDown">
+                     <div class="col-4 wow fadeInDown">
                             <div class="beta-banner">
-                                    <a target="_blank" href="http://www.shareasale.com/r.cfm?b=665409&amp;u=1014588&amp;m=5108&amp;urllink=&amp;afftrack="><img src="http://static.shareasale.com/image/5108/unpublished600x315FB.jpg" border="0" /></a>
-                                 
+                            <iframe width='286' height='125' src='http://www.sunfrogshirts.com/widget/sfwidget_sm.cfm?25110&ct=19,24,35,12,71,20,62,13,11,&key=&btn=1&btntxt=Buy Now' frameborder='0' allowfullscreen scrolling='no'></iframe>
+                                  
                             </div>
                     </div>
                     <div class="col-4 wow fadeInDown">
@@ -150,18 +160,7 @@
                                   
                             </div>
                     </div>
-            </div>
-                                
-<div class="space50">&nbsp;</div>
-                
-            <div class="beta-products-list" ng-controller="productCtrl">
-                <div ng-include="templates[0].url"></div>	     		
-            </div> <!-- .beta-products-list -->
-    </div> <!-- .maincontent -->		
-				
-<div class="space50">&nbsp;</div>
-
-      <div class="dg" ng-include="'views/bottomBanners.html'"></div>
+</div>
 
 			</div> <!-- content -->
 		</div> <!-- .container -->

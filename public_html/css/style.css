@@ -1024,7 +1024,7 @@ background-color:#57a7c6
 ============================================================================= */
 
 #logo img {
-margin-bottom:13px
+margin-bottom:0px
 }
 
 .slogan {
@@ -1032,7 +1032,7 @@ display:inline-block;
 width:130px;
 padding:16px 0 10px 20px;
 border-left:1px solid #d3d3d3;
-margin-left:25px
+margin-left:0px
 }
 
 .header-bottom {
@@ -5092,7 +5092,7 @@ font-size: 35px;}
 .sub-menu li.active, .children li.active{background:#3a5c83; color:white!important;}
 .sub-menu li a, .children li a{font-size:14px;}
 .sub-menu{width:240px;}
-#logo{padding-right: 7px;}
+#logo{padding-right: 0px;}
 .beta-highlight{background-color:#3a5c83;}
 .bg-color10{background-color:#58a7c6;}
 .parent-active>a{background:#3a5c83; color:white;}
