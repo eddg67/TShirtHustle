@@ -5,19 +5,12 @@
  */
 angular.module('myApp.productCtrl', ['ngRoute'])
 
-/*.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/view1', {
-    templateUrl: 'view1/view1.html',
-    controller: 'View1Ctrl'
-  });
-}])*/
-
 .controller('productCtrl', function($scope,$http) {
     $scope.firstName= "John";
     $scope.lastName= "Doe";
     $scope.templates = [{ name: 'templateCC', url: 'views/productList.html'}];
     
-    $http.get("/products?t=11")
+    $http.get("/api/products")
     .success(function(response) {
             var raw = response;
             
