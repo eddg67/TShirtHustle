@@ -17,6 +17,10 @@ $routeProvider.
         templateUrl: 'views/productList.html',
         controller: 'searchCtrl'
       }).
+      when('/', {
+              templateUrl: 'views/productList.html',
+              controller: 'productCtrl'
+            }).
       otherwise({
         redirectTo: '/'
       });

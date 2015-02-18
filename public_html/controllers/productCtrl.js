@@ -8,6 +8,7 @@ angular.module('myApp.productCtrl', ['ngRoute'])
 .controller('productCtrl', function($scope,$http) {
     $scope.firstName= "John";
     $scope.lastName= "Doe";
+    $scope.type = "Sellers";
     $scope.templates = [{ name: 'templateCC', url: 'views/productList.html'}];
     
     $http.get("/api/products")

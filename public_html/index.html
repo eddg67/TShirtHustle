@@ -40,7 +40,7 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 
-  <div ng-view></div>
+
   <!-- #header -->
 	<div id="header">
 		<div class="header-top">
@@ -67,10 +67,10 @@
 				</div>
 				<div class="pull-right beta-components space-left ov">
 					<div class="space10">&nbsp;</div>
-					<div class="beta-comp">
-						<form role="search" method="get" id="searchform" action="/">
-					        <input type="text" value="" name="s" id="s" placeholder="Search entire store here..." />
-					        <button class="fa fa-search" type="submit" id="searchsubmit"></button>
+					<div class="beta-comp" ng-controller="searchCtrl">
+						<form role="search" id="searchform">
+					        <input type="text" ng-model="term" value="" name="s" id="s" placeholder="Search entire store here..." />
+					        <button class="fa fa-search" id="searchsubmit" ng-click="search(term)"></button>
 						</form>
 					</div>
 
@@ -121,7 +121,7 @@
 	
 	<div class="container">
 		<div id="content">
-                    <div ng-view></div>
+
     <div class="main-content">
 <!--
     <div class="fullwidthbanner-container" ng-include="'views/topSlider.html'"></div> 
@@ -133,10 +133,12 @@
             </div>
                                 
 <div class="space50">&nbsp;</div>
-                                <h4>Top Products</h4>
-            <div class="beta-products-list" ng-controller="productCtrl">
-                <div ng-include="templates[0].url"></div>	     		
-            </div> <!-- .beta-products-list -->
+
+
+        <div ng-view></div>
+            <!--<div class="beta-products-list" ng-controller="productCtrl">-->
+                <!--<div ng-include="templates[0].url"></div>	     		-->
+            <!--</div> &lt;!&ndash; .beta-products-list &ndash;&gt;-->
     </div> <!-- .maincontent -->		
 				
 <div class="space50">&nbsp;</div>
