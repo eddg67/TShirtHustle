@@ -1,10 +1,10 @@
 
 <div ng-if="productList.length == 0">
-    <h4>No Results found</h4>
+    <h2>No Results found</h2>
 </div>
 
 <div ng-if="productList.length > 0">
-    <h4>Top {{type}}</h4>
+    <h2>Top {{type}}</h2>
     <!-- code to render a large video block-->
     <div ng-repeat="items in productList" class="row">
         <div ng-repeat="item in items" >
