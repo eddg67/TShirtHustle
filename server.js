@@ -12,43 +12,18 @@ var http = require('http'),
     crypto = require('crypto'),
     config = require('./config')();
     
- var MongoClient = require('mongodb').MongoClient;
+ var mongoClient = require('mongodb').MongoClient;
  var items;
  var viewPath = '/Users/e/Documents/Projects/TShirtHustle/views';
 
 
 
-// var collection = mDB.collection('products');
-  //console.log(collection);
-//2 
-var app = express();
-var router = express.Router();
-app.use(router);
-  
-app.set('port', config.port|| 3000); 
-
-app.use(express.static(path.join(__dirname, 'public_html')));
-app.use( bodyParser.json() );       // to support JSON-encoded bodies
-app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
-  extended: true
-}));
-
 // Connect to the db
-MongoClient.connect("mongodb://localhost:27017/ss_products", function(err, db) {
+mongoClient.connect("mongodb://localhost:27017/ss_products", function(err, db) {
   if(err) {
-        console.log('Sorry, there is no mongo db server running.');
-    } else {
-        
-        var attachDB = function(req, res, next) {
-            req.db = db;
-            next();
-        };
-        
-        app.get('/',attachDB, function (req, res) {
-          res.sendfile('index.html');
-          
-        });
-        
+     console.log('Sorry, there is no mongo db server running.');
+   } else {
+
        /* app.get('/search',attachDB, function (req, res) {
             var value = req.body.q;
             var hash = crypto.createHash('sha256').update(value).digest('base64');
@@ -59,33 +34,60 @@ MongoClient.connect("mongodb://localhost:27017/ss_products", function(err, db) {
             res.send(value);
           
         });*/
-        
-        
-      
-        
-       /* app
-            .get('/search',function(req, res, next) {
-                res.send("value");
-            })
-            .post('/search',function(req, res, next) {
-              // maybe add a new event...
+
+        var app = express();
+        var router = express.Router();
+        app.use(router);
+
+        app.set('port', config.port|| 3000);
+
+        app.use(express.static(path.join(__dirname, 'public_html')));
+        app.use( bodyParser.json() );       // to support JSON-encoded bodies
+        app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+            extended: true
+        }));
+
+        var attachDB = function(req, res, next) {
+            req.db = db;
+            next();
+        };
+
+        //Root Home
+        app.get('/',attachDB, function (req, res) {
+          res.sendfile('index.html');
+
         });
-        */
+        //API call For Stores
+       router.route('/api/store/:id')
+       .post(attachDB,function(req, res) {
+
+       		 res.send("tagId is set to " + req.param("id"));
+
+       	})
+       .get(attachDB,function(req, res) {
+
+       	    var key = req.param("id");
+            var el = req.db.collection('products').find(
+              {
+                   'Merchant Id': key
+
+              }).toArray(function(err, items) {
+                    console.log(items);
+                    res.send(items);
+                 });
+       	});
+       	//end
+
+        //API for search
+        router.route('/api/search/:id')
+        .post(attachDB,function(req, res) {
+
+             res.send("tagId is set to " + req.param("id"));
+
+        })
+        .get(attachDB,function(req, res) {
    
-       router.route('/api/search/:id')
-
-	// create a bear (accessed at POST http://localhost:8080/bears)
-	.post(attachDB,function(req, res) {
-		
-		 res.send("tagId is set to " + req.param("id"));
-
-		
-	})
-
-	// get all the bears (accessed at GET http://localhost:8080/api/bears)
-	.get(attachDB,function(req, res) {
-   
-	var key = req.param("id");
+	    var key = req.param("id");
         console.log(key);
         var el = req.db.collection('products').find(
               
@@ -103,7 +105,7 @@ MongoClient.connect("mongodb://localhost:27017/ss_products", function(err, db) {
                     
                     res.send(items);
                 });
-	});
+	    });
 
         
         app.post('/contact',attachDB,function(req,res){
@@ -112,13 +114,11 @@ MongoClient.connect("mongodb://localhost:27017/ss_products", function(err, db) {
         });
         
         app.get('/api/products',attachDB, function (req, res) {
-            //console.log(req.db.collection('products').find());
-          //res.contentType('application/json');find({"IMAGE URL":{$ne:null}});
+          //res.contentType('application/json');
           var el = req.db.collection('products').find({"Big Image":{$ne:""}}).toArray(function(err, items) {
-              //console.log(items)
               res.send(items);
           })
-         // res.send(el);
+
         });
         
         http.createServer(app).listen(config.port, function(){
@@ -130,8 +130,3 @@ MongoClient.connect("mongodb://localhost:27017/ss_products", function(err, db) {
     }
 });
  
-
- 
-/*http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
-  });*/

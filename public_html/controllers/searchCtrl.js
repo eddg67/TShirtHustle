@@ -5,9 +5,8 @@
  */
 angular.module('myApp.searchCtrl', [])
 .controller('searchCtrl', function($scope,$location,$http,$routeParams) {
-    $scope.firstName= "John";
-    $scope.lastName= "Doe";
-     $scope.type = "Search Results";
+
+    $scope.header = "Search Results";
     $scope.Id = $routeParams.Id;
     var path = "/api/search/" + $scope.Id;
 

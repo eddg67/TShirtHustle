@@ -5,6 +5,7 @@ angular.module('myApp', [
   'ngRoute',
   'myApp.productCtrl',
   'myApp.searchCtrl',
+  'myApp.storeCtrl',
   'myApp.contactCtrl'
 ]).
 config(['$routeProvider', function($routeProvider) {
@@ -17,6 +18,14 @@ $routeProvider.
         templateUrl: 'views/productList.html',
         controller: 'searchCtrl'
       }).
+      when('/store', {
+              templateUrl: 'views/productList.html',
+              controller: 'productCtrl'
+            }).
+      when('/store/:Id', {
+               templateUrl: 'views/productList.html',
+               controller: 'storeCtrl'
+             }).
       when('/', {
               templateUrl: 'views/productList.html',
               controller: 'productCtrl'
