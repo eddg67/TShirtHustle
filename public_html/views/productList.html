@@ -3,7 +3,7 @@
     <h2>No Results found</h2>
 </div>
 
-<div ng-if="productList.length > 0">
+<div ng-if="productList.length > 0" tagged-infinite-scroll="getMore()">
     <h2>{{header}}</h2>
     <!-- code to render a large video block-->
     <div ng-repeat="items in productList" class="row">

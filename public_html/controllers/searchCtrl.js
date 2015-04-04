@@ -16,6 +16,44 @@ angular.module('myApp.searchCtrl', [])
         $location.path( path );
     }
 
+    $scope.page = 1;
+    $scope.productList = [];
+    $scope.fetching = false;
+    $scope.ended = false;
+ // Fetch more items
+    $scope.getMore = function() {
+         $scope.page++;
+         $scope.fetching = true;
+
+       if(!$scope.ended){
+
+            $http.get(path+'/'+$scope.page, { page : $scope.page }).then(function(items) {
+
+              $scope.fetching = false;
+
+              var raw = items.data;
+              var list = [];
+              while(raw.length){
+
+                list.push(raw.splice(0,4));
+              }
+
+              // Append the items to the list
+        if(list.length > 0)
+          {
+                $scope.ended = false;
+                $scope.productList  = $scope.productList.concat(list);
+
+          }else{
+              $scope.ended = true;
+          }
+
+       });
+      }
+    };
+
+
+
     $scope.load = function()
     {
         $http.get(path)

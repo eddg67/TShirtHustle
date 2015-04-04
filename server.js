@@ -15,6 +15,8 @@ var http = require('http'),
  var mongoClient = require('mongodb').MongoClient;
  var items;
  var viewPath = '/Users/e/Documents/Projects/TShirtHustle/views';
+ var lastItemId=0;
+ var pageLimit = 48;
 
 
 
@@ -61,42 +63,62 @@ mongoClient.connect("mongodb://localhost:27017/ss_products", function(err, db) {
        router.route('/api/store/:id')
        .post(attachDB,function(req, res) {
 
-       		 res.send("tagId is set to " + req.param("id"));
+            res.send("tagId is set to " + req.param("id"));
 
-       	})
-       .get(attachDB,function(req, res) {
+       	}).get(attachDB,function(req, res) {
 
        	    var key = req.param("id");
             var el = req.db.collection('products').find(
               {
                    'Merchant Id': key
 
-              }).toArray(function(err, items) {
+              }).limit(pageLimit)
+              .toArray(function(err, items) {
                     console.log(items);
+                    lastItemId = items[items.length-1];
                     res.send(items);
                  });
        	});
+
+        app.get('/api/store/:id/:page',attachDB, function (req, res) {
+          var pg = req.param("page");
+          var key = req.param("id");
+          var skip = pg > 1 ? pageLimit * (pg-1) : 0;
+
+          var el = req.db.collection('products').find(
+                     {
+                          'Merchant Id': key
+
+                     }).skip(skip).limit(pageLimit)
+                     .toArray(function(err, items) {
+                           console.log(items);
+                           lastItemId = items[items.length-1];
+                           res.send(items);
+                        });
+
+        });
+
        	//end
 
         //API for search
         router.route('/api/search/:id')
         .post(attachDB,function(req, res) {
 
-             res.send("tagId is set to " + req.param("id"));
+           res.send("tagId is set to " + req.param("id"));
 
-        })
-        .get(attachDB,function(req, res) {
-   
-	    var key = req.param("id");
-        console.log(key);
-        var el = req.db.collection('products').find(
+        }).get(attachDB,function(req, res) {
+
+          var key = req.param("id");
+
+           var el = req.db.collection('products')
+            .find(
               
-                    { $or:
-                        [
-                        {"Name":new RegExp(key, 'i')},
-                        {"Big Image":new RegExp(key, 'i')},
-                        {"Short Description":new RegExp(key, 'i')},
-                        {"Merchant Category":new RegExp(key, 'i')}
+               { $or:
+                   [
+                    {"Name":new RegExp(key, 'i')},
+                    {"Big Image":new RegExp(key, 'i')},
+                    {"Short Description":new RegExp(key, 'i')},
+                    {"Merchant Category":new RegExp(key, 'i')}
                     ]
                 }
                     
@@ -107,15 +129,60 @@ mongoClient.connect("mongodb://localhost:27017/ss_products", function(err, db) {
                 });
 	    });
 
+       router.route('/api/search/:id/:page')
+       .post(attachDB,function(req, res) {
+
+          res.send("tagId is set to " + req.param("id"));
+
+        }).get(attachDB,function(req, res) {
+
+            var pg = req.param("page");
+            var key = req.param("id");
+            var skip = pg > 1 ? pageLimit * (pg-1) : 0;
+
+            var el = req.db.collection('products')
+            .find(
+
+               { $or:
+                   [
+                    {"Name":new RegExp(key, 'i')},
+                    {"Big Image":new RegExp(key, 'i')},
+                    {"Short Description":new RegExp(key, 'i')},
+                    {"Merchant Category":new RegExp(key, 'i')}
+                    ]
+                }
+                ).skip(skip).limit(pageLimit)
+                .toArray(function(err, items) {
+                    console.log(items);
+
+                    res.send(items);
+                });
+	    });
+
+
         
         app.post('/contact',attachDB,function(req,res){
             var email = req.body.email;
            res.send(email);
         });
-        
-        app.get('/api/products',attachDB, function (req, res) {
-          //res.contentType('application/json');
-          var el = req.db.collection('products').find({"Big Image":{$ne:""}}).toArray(function(err, items) {
+
+         app.get('/api/products',attachDB, function (req, res) {
+
+                  //res.contentType('application/json');
+                  var el = req.db.collection('products').find({"Big Image":{$ne:""}} ).limit(pageLimit).toArray(function(err, items) {
+                      lastItemId = items[items.length-1];
+                      console.log(lastItemId);
+                      res.send(items);
+                  })
+
+                });
+        //,{'_id':{ $gt: lastItemId }}
+        app.get('/api/products/:page',attachDB, function (req, res) {
+          var pg = req.param("page");
+          var skip = pg > 1 ? pageLimit * (pg-1) : 0;
+          var el = req.db.collection('products').find({"Big Image":{$ne:""}} ).skip(skip).limit(pageLimit).toArray(function(err, items) {
+             lastItemId = items[items.length-1];
+              console.log(lastItemId);
               res.send(items);
           })
 
