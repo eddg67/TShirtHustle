@@ -2,17 +2,273 @@
 1 verbose cli [ 'node', '/usr/local/bin/npm', 'install' ]
 2 info using npm@1.4.28
 3 info using node@v0.10.32
-4 verbose config Skipping project config: /Users/e/.npmrc. (matches userconfig)
-5 error install Couldn't read dependencies
-6 error package.json ENOENT, open '/Users/e/package.json'
-6 error package.json This is most likely not a problem with npm itself.
-6 error package.json npm can't find a package.json file in your current directory.
-7 error System Darwin 14.0.0
-8 error command "node" "/usr/local/bin/npm" "install"
-9 error cwd /Users/e/Documents/Projects/TShirt
-10 error node -v v0.10.32
-11 error npm -v 1.4.28
-12 error path /Users/e/package.json
-13 error code ENOPACKAGEJSON
-14 error errno 34
-15 verbose exit [ 34, true ]
+4 verbose readDependencies using package.json deps
+5 verbose install where, deps [ '/Users/e/Documents/Projects/TShirt',
+5 verbose install   [ 'karma',
+5 verbose install     'protractor',
+5 verbose install     'http-server',
+5 verbose install     'bower',
+5 verbose install     'shelljs',
+5 verbose install     'express',
+5 verbose install     'karma-junit-reporter',
+5 verbose install     'mongodb',
+5 verbose install     'socket.io',
+5 verbose install     'jade' ] ]
+6 info preinstall TShirt-Hustle@0.0.0
+7 verbose readDependencies using package.json deps
+8 verbose already installed skipping bower@^1.3.1 /Users/e/Documents/Projects/TShirt
+9 verbose already installed skipping shelljs@^0.2.6 /Users/e/Documents/Projects/TShirt
+10 verbose already installed skipping express@~4.0.0 /Users/e/Documents/Projects/TShirt
+11 verbose already installed skipping karma-junit-reporter@^0.2.2 /Users/e/Documents/Projects/TShirt
+12 verbose cache add [ 'mongodb@latest', null ]
+13 verbose cache add name=undefined spec="mongodb@latest" args=["mongodb@latest",null]
+14 verbose parsed url { protocol: null,
+14 verbose parsed url   slashes: null,
+14 verbose parsed url   auth: null,
+14 verbose parsed url   host: null,
+14 verbose parsed url   port: null,
+14 verbose parsed url   hostname: null,
+14 verbose parsed url   hash: null,
+14 verbose parsed url   search: null,
+14 verbose parsed url   query: null,
+14 verbose parsed url   pathname: 'mongodb@latest',
+14 verbose parsed url   path: 'mongodb@latest',
+14 verbose parsed url   href: 'mongodb@latest' }
+15 verbose cache add [ 'socket.io@latest', null ]
+16 verbose cache add name=undefined spec="socket.io@latest" args=["socket.io@latest",null]
+17 verbose parsed url { protocol: null,
+17 verbose parsed url   slashes: null,
+17 verbose parsed url   auth: null,
+17 verbose parsed url   host: null,
+17 verbose parsed url   port: null,
+17 verbose parsed url   hostname: null,
+17 verbose parsed url   hash: null,
+17 verbose parsed url   search: null,
+17 verbose parsed url   query: null,
+17 verbose parsed url   pathname: 'socket.io@latest',
+17 verbose parsed url   path: 'socket.io@latest',
+17 verbose parsed url   href: 'socket.io@latest' }
+18 verbose cache add name="mongodb" spec="latest" args=["mongodb","latest"]
+19 verbose parsed url { protocol: null,
+19 verbose parsed url   slashes: null,
+19 verbose parsed url   auth: null,
+19 verbose parsed url   host: null,
+19 verbose parsed url   port: null,
+19 verbose parsed url   hostname: null,
+19 verbose parsed url   hash: null,
+19 verbose parsed url   search: null,
+19 verbose parsed url   query: null,
+19 verbose parsed url   pathname: 'latest',
+19 verbose parsed url   path: 'latest',
+19 verbose parsed url   href: 'latest' }
+20 verbose addNamed [ 'mongodb', 'latest' ]
+21 verbose addNamed [ null, null ]
+22 verbose cache add [ 'jade@latest', null ]
+23 verbose cache add name=undefined spec="jade@latest" args=["jade@latest",null]
+24 verbose parsed url { protocol: null,
+24 verbose parsed url   slashes: null,
+24 verbose parsed url   auth: null,
+24 verbose parsed url   host: null,
+24 verbose parsed url   port: null,
+24 verbose parsed url   hostname: null,
+24 verbose parsed url   hash: null,
+24 verbose parsed url   search: null,
+24 verbose parsed url   query: null,
+24 verbose parsed url   pathname: 'jade@latest',
+24 verbose parsed url   path: 'jade@latest',
+24 verbose parsed url   href: 'jade@latest' }
+25 verbose cache add name="socket.io" spec="latest" args=["socket.io","latest"]
+26 verbose parsed url { protocol: null,
+26 verbose parsed url   slashes: null,
+26 verbose parsed url   auth: null,
+26 verbose parsed url   host: null,
+26 verbose parsed url   port: null,
+26 verbose parsed url   hostname: null,
+26 verbose parsed url   hash: null,
+26 verbose parsed url   search: null,
+26 verbose parsed url   query: null,
+26 verbose parsed url   pathname: 'latest',
+26 verbose parsed url   path: 'latest',
+26 verbose parsed url   href: 'latest' }
+27 verbose addNamed [ 'socket.io', 'latest' ]
+28 verbose addNamed [ null, null ]
+29 silly lockFile d3746d4c-mongodb-latest mongodb@latest
+30 verbose lock mongodb@latest /Users/e/.npm/d3746d4c-mongodb-latest.lock
+31 silly lockFile d01f6c55-socket-io-latest socket.io@latest
+32 verbose lock socket.io@latest /Users/e/.npm/d01f6c55-socket-io-latest.lock
+33 verbose already installed skipping karma@~0.10 /Users/e/Documents/Projects/TShirt
+34 verbose cache add name="jade" spec="latest" args=["jade","latest"]
+35 verbose parsed url { protocol: null,
+35 verbose parsed url   slashes: null,
+35 verbose parsed url   auth: null,
+35 verbose parsed url   host: null,
+35 verbose parsed url   port: null,
+35 verbose parsed url   hostname: null,
+35 verbose parsed url   hash: null,
+35 verbose parsed url   search: null,
+35 verbose parsed url   query: null,
+35 verbose parsed url   pathname: 'latest',
+35 verbose parsed url   path: 'latest',
+35 verbose parsed url   href: 'latest' }
+36 verbose addNamed [ 'jade', 'latest' ]
+37 verbose addNamed [ null, null ]
+38 silly lockFile 50c7aeb0-jade-latest jade@latest
+39 verbose lock jade@latest /Users/e/.npm/50c7aeb0-jade-latest.lock
+40 verbose already installed skipping protractor@^1.1.1 /Users/e/Documents/Projects/TShirt
+41 info addNameTag [ 'mongodb', 'latest' ]
+42 info addNameTag [ 'socket.io', 'latest' ]
+43 info addNameTag [ 'jade', 'latest' ]
+44 verbose already installed skipping http-server@^0.6.1 /Users/e/Documents/Projects/TShirt
+45 verbose request where is /mongodb
+46 verbose request registry https://registry.npmjs.org/
+47 verbose request id aa0743df48c2a184
+48 verbose url raw /mongodb
+49 verbose url resolving [ 'https://registry.npmjs.org/', './mongodb' ]
+50 verbose url resolved https://registry.npmjs.org/mongodb
+51 verbose request where is https://registry.npmjs.org/mongodb
+52 info trying registry request attempt 1 at 21:09:00
+53 verbose etag "BIE2ETHA0NR73C76WCQKGR6TA"
+54 http GET https://registry.npmjs.org/mongodb
+55 verbose request where is /jade
+56 verbose request registry https://registry.npmjs.org/
+57 verbose url raw /jade
+58 verbose url resolving [ 'https://registry.npmjs.org/', './jade' ]
+59 verbose url resolved https://registry.npmjs.org/jade
+60 verbose request where is https://registry.npmjs.org/jade
+61 info trying registry request attempt 1 at 21:09:00
+62 verbose etag "6JB6OJEY63KVMO86MV8VO2NQZ"
+63 http GET https://registry.npmjs.org/jade
+64 verbose request where is /socket.io
+65 verbose request registry https://registry.npmjs.org/
+66 verbose url raw /socket.io
+67 verbose url resolving [ 'https://registry.npmjs.org/', './socket.io' ]
+68 verbose url resolved https://registry.npmjs.org/socket.io
+69 verbose request where is https://registry.npmjs.org/socket.io
+70 info trying registry request attempt 1 at 21:09:00
+71 verbose etag "DSO0REGFP3A9VHG0TN3PSQK6J"
+72 http GET https://registry.npmjs.org/socket.io
+73 http 200 https://registry.npmjs.org/socket.io
+74 silly registry.get cb [ 200,
+74 silly registry.get   { date: 'Fri, 23 Jan 2015 02:09:00 GMT',
+74 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+74 silly registry.get     etag: '"3E5KSZJZ6OYVN2MPYH1R8KP5M"',
+74 silly registry.get     'content-type': 'application/json',
+74 silly registry.get     'cache-control': 'max-age=60',
+74 silly registry.get     'content-length': '107530',
+74 silly registry.get     'accept-ranges': 'bytes',
+74 silly registry.get     via: '1.1 varnish',
+74 silly registry.get     age: '23',
+74 silly registry.get     'x-served-by': 'cache-atl6233-ATL',
+74 silly registry.get     'x-cache': 'HIT',
+74 silly registry.get     'x-cache-hits': '2',
+74 silly registry.get     'x-timer': 'S1421978940.940698,VS0,VE0',
+74 silly registry.get     vary: 'Accept',
+74 silly registry.get     'keep-alive': 'timeout=10, max=50',
+74 silly registry.get     connection: 'Keep-Alive' } ]
+75 verbose addNamed [ 'socket.io', '1.3.2' ]
+76 verbose addNamed [ '1.3.2', '1.3.2' ]
+77 silly lockFile b15c0080-socket-io-1-3-2 socket.io@1.3.2
+78 verbose lock socket.io@1.3.2 /Users/e/.npm/b15c0080-socket-io-1-3-2.lock
+79 silly lockFile b3aebed7-rg-socket-io-socket-io-1-3-2-tgz https://registry.npmjs.org/socket.io/-/socket.io-1.3.2.tgz
+80 verbose lock https://registry.npmjs.org/socket.io/-/socket.io-1.3.2.tgz /Users/e/.npm/b3aebed7-rg-socket-io-socket-io-1-3-2-tgz.lock
+81 verbose addRemoteTarball [ 'https://registry.npmjs.org/socket.io/-/socket.io-1.3.2.tgz',
+81 verbose addRemoteTarball   'b8c1ffc63b3341d9609ee55e06560a6ca1f185e5' ]
+82 info retry fetch attempt 1 at 21:09:01
+83 verbose fetch to= /var/folders/jn/rlz2f9ms05g9_5w8p6wz8j040000gn/T/npm-2386-sHdksciU/registry.npmjs.org/socket.io/-/socket.io-1.3.2.tgz
+84 http GET https://registry.npmjs.org/socket.io/-/socket.io-1.3.2.tgz
+85 http 200 https://registry.npmjs.org/jade
+86 silly registry.get cb [ 200,
+86 silly registry.get   { date: 'Fri, 23 Jan 2015 02:09:00 GMT',
+86 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+86 silly registry.get     etag: '"5UBJBOWOY3KX298JE4RB13RO4"',
+86 silly registry.get     'content-type': 'application/json',
+86 silly registry.get     'cache-control': 'max-age=60',
+86 silly registry.get     'content-length': '139204',
+86 silly registry.get     'accept-ranges': 'bytes',
+86 silly registry.get     via: '1.1 varnish',
+86 silly registry.get     age: '21',
+86 silly registry.get     'x-served-by': 'cache-atl6233-ATL',
+86 silly registry.get     'x-cache': 'HIT',
+86 silly registry.get     'x-cache-hits': '2',
+86 silly registry.get     'x-timer': 'S1421978940.942685,VS0,VE0',
+86 silly registry.get     vary: 'Accept',
+86 silly registry.get     'keep-alive': 'timeout=10, max=50',
+86 silly registry.get     connection: 'Keep-Alive' } ]
+87 verbose addNamed [ 'jade', '1.9.1' ]
+88 verbose addNamed [ '1.9.1', '1.9.1' ]
+89 silly lockFile 9901c118-jade-1-9-1 jade@1.9.1
+90 verbose lock jade@1.9.1 /Users/e/.npm/9901c118-jade-1-9-1.lock
+91 silly lockFile a5b4eb9a-ry-npmjs-org-jade-jade-1-9-1-tgz https://registry.npmjs.org/jade/-/jade-1.9.1.tgz
+92 verbose lock https://registry.npmjs.org/jade/-/jade-1.9.1.tgz /Users/e/.npm/a5b4eb9a-ry-npmjs-org-jade-jade-1-9-1-tgz.lock
+93 verbose addRemoteTarball [ 'https://registry.npmjs.org/jade/-/jade-1.9.1.tgz',
+93 verbose addRemoteTarball   '5cf8da5b1edb6973dc26d6d9245d0e8ba005cd26' ]
+94 info retry fetch attempt 1 at 21:09:01
+95 verbose fetch to= /var/folders/jn/rlz2f9ms05g9_5w8p6wz8j040000gn/T/npm-2386-sHdksciU/registry.npmjs.org/jade/-/jade-1.9.1.tgz
+96 http GET https://registry.npmjs.org/jade/-/jade-1.9.1.tgz
+97 http 200 https://registry.npmjs.org/mongodb
+98 silly registry.get cb [ 200,
+98 silly registry.get   { date: 'Fri, 23 Jan 2015 02:09:00 GMT',
+98 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+98 silly registry.get     etag: '"3A5320YZU7PRN6TYO8VY5TLAM"',
+98 silly registry.get     'content-type': 'application/json',
+98 silly registry.get     'cache-control': 'max-age=60',
+98 silly registry.get     'content-length': '415745',
+98 silly registry.get     'accept-ranges': 'bytes',
+98 silly registry.get     via: '1.1 varnish',
+98 silly registry.get     age: '17',
+98 silly registry.get     'x-served-by': 'cache-atl6225-ATL',
+98 silly registry.get     'x-cache': 'HIT',
+98 silly registry.get     'x-cache-hits': '1',
+98 silly registry.get     'x-timer': 'S1421978940.939997,VS0,VE5',
+98 silly registry.get     vary: 'Accept',
+98 silly registry.get     'keep-alive': 'timeout=10, max=50',
+98 silly registry.get     connection: 'Keep-Alive' } ]
+99 http 200 https://registry.npmjs.org/socket.io/-/socket.io-1.3.2.tgz
+100 verbose addNamed [ 'mongodb', '1.4.29' ]
+101 verbose addNamed [ '1.4.29', '1.4.29' ]
+102 silly lockFile 2563398f-mongodb-1-4-29 mongodb@1.4.29
+103 verbose lock mongodb@1.4.29 /Users/e/.npm/2563398f-mongodb-1-4-29.lock
+104 silly lockFile 0ceb3f57-s-org-mongodb-mongodb-1-4-29-tgz https://registry.npmjs.org/mongodb/-/mongodb-1.4.29.tgz
+105 verbose lock https://registry.npmjs.org/mongodb/-/mongodb-1.4.29.tgz /Users/e/.npm/0ceb3f57-s-org-mongodb-mongodb-1-4-29-tgz.lock
+106 verbose addRemoteTarball [ 'https://registry.npmjs.org/mongodb/-/mongodb-1.4.29.tgz',
+106 verbose addRemoteTarball   '0f1fc8b665e39c9bef0f54d941cad54cd3e3e60e' ]
+107 info retry fetch attempt 1 at 21:09:01
+108 verbose fetch to= /var/folders/jn/rlz2f9ms05g9_5w8p6wz8j040000gn/T/npm-2386-sHdksciU/registry.npmjs.org/mongodb/-/mongodb-1.4.29.tgz
+109 http GET https://registry.npmjs.org/mongodb/-/mongodb-1.4.29.tgz
+110 silly lockFile b3aebed7-rg-socket-io-socket-io-1-3-2-tgz https://registry.npmjs.org/socket.io/-/socket.io-1.3.2.tgz
+111 silly lockFile b3aebed7-rg-socket-io-socket-io-1-3-2-tgz https://registry.npmjs.org/socket.io/-/socket.io-1.3.2.tgz
+112 silly lockFile b15c0080-socket-io-1-3-2 socket.io@1.3.2
+113 silly lockFile b15c0080-socket-io-1-3-2 socket.io@1.3.2
+114 silly lockFile d01f6c55-socket-io-latest socket.io@latest
+115 silly lockFile d01f6c55-socket-io-latest socket.io@latest
+116 http 200 https://registry.npmjs.org/jade/-/jade-1.9.1.tgz
+117 silly lockFile a5b4eb9a-ry-npmjs-org-jade-jade-1-9-1-tgz https://registry.npmjs.org/jade/-/jade-1.9.1.tgz
+118 silly lockFile a5b4eb9a-ry-npmjs-org-jade-jade-1-9-1-tgz https://registry.npmjs.org/jade/-/jade-1.9.1.tgz
+119 silly lockFile 9901c118-jade-1-9-1 jade@1.9.1
+120 silly lockFile 9901c118-jade-1-9-1 jade@1.9.1
+121 silly lockFile 50c7aeb0-jade-latest jade@latest
+122 silly lockFile 50c7aeb0-jade-latest jade@latest
+123 http 200 https://registry.npmjs.org/mongodb/-/mongodb-1.4.29.tgz
+124 silly lockFile 0ceb3f57-s-org-mongodb-mongodb-1-4-29-tgz https://registry.npmjs.org/mongodb/-/mongodb-1.4.29.tgz
+125 silly lockFile 0ceb3f57-s-org-mongodb-mongodb-1-4-29-tgz https://registry.npmjs.org/mongodb/-/mongodb-1.4.29.tgz
+126 silly lockFile 2563398f-mongodb-1-4-29 mongodb@1.4.29
+127 silly lockFile 2563398f-mongodb-1-4-29 mongodb@1.4.29
+128 silly lockFile d3746d4c-mongodb-latest mongodb@latest
+129 silly lockFile d3746d4c-mongodb-latest mongodb@latest
+130 error Error: EACCES, mkdir '/Users/e/.npm/mongodb/1.4.29'
+130 error  { [Error: EACCES, mkdir '/Users/e/.npm/mongodb/1.4.29']
+130 error   errno: 3,
+130 error   code: 'EACCES',
+130 error   path: '/Users/e/.npm/mongodb/1.4.29',
+130 error   parent: 'TShirt-Hustle' }
+131 error Please try running this command again as root/Administrator.
+132 error System Darwin 14.0.0
+133 error command "node" "/usr/local/bin/npm" "install"
+134 error cwd /Users/e/Documents/Projects/TShirt
+135 error node -v v0.10.32
+136 error npm -v 1.4.28
+137 error path /Users/e/.npm/mongodb/1.4.29
+138 error code EACCES
+139 error errno 3
+140 error stack Error: EACCES, mkdir '/Users/e/.npm/mongodb/1.4.29'
+141 verbose exit [ 3, true ]

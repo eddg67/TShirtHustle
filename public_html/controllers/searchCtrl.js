@@ -13,7 +13,8 @@ angular.module('myApp.searchCtrl', [])
     $scope.search = function(term)
     {
        path = "/search/"+term;
-        $location.path( path );
+       ga('send', 'pageview',path);
+       $location.path( path );
     }
 
     $scope.page = 1;
@@ -26,7 +27,7 @@ angular.module('myApp.searchCtrl', [])
          $scope.fetching = true;
 
        if(!$scope.ended){
-
+            ga('send', 'event','Search scroll','scroll','Search scroll',path+'/'+$scope.page);
             $http.get(path+'/'+$scope.page, { page : $scope.page }).then(function(items) {
 
               $scope.fetching = false;
@@ -56,6 +57,7 @@ angular.module('myApp.searchCtrl', [])
 
     $scope.load = function()
     {
+       ga('send', 'pageview',window.location.hash);
         $http.get(path)
         .success(function(response) {
                 var raw = response;
@@ -64,8 +66,7 @@ angular.module('myApp.searchCtrl', [])
                 while(raw.length) {
                     list.push(raw.splice(0,4));
                 }
-                console.log(path);
-                console.log(list);
+
                 $scope.productList  = list;
             }
          );

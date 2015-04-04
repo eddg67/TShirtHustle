@@ -18,25 +18,30 @@ angular.module('myApp.productCtrl', ['ngRoute'])
         $scope.page++;
         $scope.fetching = true;
 
-        $http.get('/api/products/'+$scope.page, { page : $scope.page }).then(function(items) {
-          $scope.fetching = false;
+       if(!$scope.ended){
 
-          var raw = items.data;
-          var list = [];
-          while(raw.length){
-            list.push(raw.splice(0,4));
-          }
-         // Append the items to the list
-          if(list.length > 0)
-          {
-            $scope.ended = false;
-            $scope.productList  = $scope.productList.concat(list);
+            ga('send', 'event','Category','products','product scroll','/products/'+$scope.page);
 
-          }else{
+            $http.get('/api/products/'+$scope.page, { page : $scope.page }).then(function(items) {
+              $scope.fetching = false;
 
-            $scope.ended = true;
-          }
-        });
+              var raw = items.data;
+              var list = [];
+              while(raw.length){
+                list.push(raw.splice(0,4));
+              }
+             // Append the items to the list
+              if(list.length > 0)
+              {
+                $scope.ended = false;
+                $scope.productList  = $scope.productList.concat(list);
+
+              }else{
+
+                $scope.ended = true;
+              }
+            });
+        }
       };
     
     $http.get("/api/products")

@@ -121,8 +121,8 @@ mongoClient.connect("mongodb://localhost:27017/ss_products", function(err, db) {
                     {"Merchant Category":new RegExp(key, 'i')}
                     ]
                 }
-                    
-                ).toArray(function(err, items) {
+                ).limit(pageLimit)
+                .toArray(function(err, items) {
                     console.log(items);
                     
                     res.send(items);

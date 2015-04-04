@@ -21,6 +21,7 @@ angular.module('myApp.storeCtrl', [])
         $scope.page++;
         $scope.fetching = true;
         if(!$scope.ended){
+        ga('send', 'event','Category','store','store scroll',path+'/'+$scope.page);
 
         $http.get(path+'/'+$scope.page, { page : $scope.page }).then(function(items) {
 
@@ -52,6 +53,7 @@ angular.module('myApp.storeCtrl', [])
 
     $scope.load = function()
     {
+        ga('send', 'pageview','/store/' + $scope.Id);
         $http.get(path)
         .success(function(response) {
                 var raw = response;
