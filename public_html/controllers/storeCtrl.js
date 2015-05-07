@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 angular.module('myApp.storeCtrl', [])
-.controller('storeCtrl', function($scope,$location,$http,$routeParams) {
+.controller('storeCtrl', function($scope,$location,$http,$routeParams,apiService) {
 
     $scope.Id = $routeParams.Id;
     var path = "/api/store/" + $scope.Id;
@@ -13,40 +13,22 @@ angular.module('myApp.storeCtrl', [])
 
     $scope.page = 1;
     $scope.productList = [];
-    $scope.fetching = false;
-    $scope.ended = false;
+
 
       // Fetch more items
       $scope.getMore = function() {
-        $scope.page++;
-        $scope.fetching = true;
-        if(!$scope.ended){
         ga('send', 'event','Category','store','store scroll',path+'/'+$scope.page);
 
-        $http.get(path+'/'+$scope.page, { page : $scope.page }).then(function(items) {
-
-          $scope.fetching = false;
-
-          var raw = items.data;
-          var list = [];
-          while(raw.length){
-
-            list.push(raw.splice(0,4));
-          }
-
-          // Append the items to the list
-          if(list.length > 0)
-          {
-            $scope.ended = false;
-            $scope.productList  = $scope.productList.concat(list);
-
-          }else{
-
-            $scope.ended = true;
-          }
-
-        });
+        if(!apiService.fetching){
+           $scope.page++;
+            apiService.fetch(path,$scope.page)
+                         .success(function(response) {
+                               apiService.fetching = false;
+                               $scope.productList = $scope.productList.concat(apiService.parse(response));
+                             }
+                         );
         }
+
       };
 
 
@@ -54,20 +36,13 @@ angular.module('myApp.storeCtrl', [])
     $scope.load = function()
     {
         ga('send', 'pageview','/store/' + $scope.Id);
-        $http.get(path)
-        .success(function(response) {
-                var raw = response;
 
-                var list = [];
-                while(raw.length) {
-                    list.push(raw.splice(0,4));
-                }
-                console.log(path);
-                console.log(list);
-                $scope.productList  = list;
-                $scope.ended = false;
-            }
-         );
+        apiService.fetch(path,$scope.page)
+              .success(function(response) {
+                    apiService.fetching = false;
+                    $scope.productList = apiService.parse(response);
+                  }
+              );
     }
 
     if($scope.Id)

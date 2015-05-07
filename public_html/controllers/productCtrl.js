@@ -5,58 +5,38 @@
  */
 angular.module('myApp.productCtrl', ['ngRoute'])
 
-.controller('productCtrl', ['$scope', '$http',function($scope,$http) {
+.controller('productCtrl', ['$scope', '$http', 'apiService',function($scope,$http,apiService) {
     $scope.header = "Top Sellers";
     $scope.templates = [{ name: 'templateCC', url: 'views/productList.html'}];
     $scope.page = 1;
     $scope.productList = [];
-    $scope.fetching = false;
-    $scope.ended = false;
 
       // Fetch more items
       $scope.getMore = function() {
-        $scope.page++;
-        $scope.fetching = true;
 
-       if(!$scope.ended){
+        ga('send', 'event','Category','products','product scroll','/products/'+$scope.page);
 
-            ga('send', 'event','Category','products','product scroll','/products/'+$scope.page);
-
-            $http.get('/api/products/'+$scope.page, { page : $scope.page }).then(function(items) {
-              $scope.fetching = false;
-
-              var raw = items.data;
-              var list = [];
-              while(raw.length){
-                list.push(raw.splice(0,4));
-              }
-             // Append the items to the list
-              if(list.length > 0)
-              {
-                $scope.ended = false;
-                $scope.productList  = $scope.productList.concat(list);
-
-              }else{
-
-                $scope.ended = true;
-              }
-            });
+        if(!apiService.fetching){
+            $scope.page++;
+            apiService.fetch("/api/products",$scope.page)
+                .success(function(response) {
+                      apiService.fetching = false;
+                      $scope.productList = $scope.productList.concat(apiService.parse(response));
+                    }
+                );
         }
+
       };
-    
-    $http.get("/api/products")
-    .success(function(response) {
-            var raw = response;
-            
-            var list = [];
-            while(raw.length) {
-               
-                list.push(raw.splice(0,4));
-            }
-           // console.log(list);
-            $scope.productList  = list;
-        }
-     );
+
+
+    apiService.fetch("/api/products",$scope.page)
+      .success(function(response) {
+            apiService.fetching = false;
+            $scope.productList = apiService.parse(response);
+          }
+      );
+
+
 
 }]);
 
