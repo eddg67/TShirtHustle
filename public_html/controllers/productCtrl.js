@@ -22,6 +22,7 @@ angular.module('myApp.productCtrl', ['ngRoute'])
                 .success(function(response) {
                       apiService.fetching = false;
                       $scope.productList = $scope.productList.concat(apiService.parse(response));
+                       addthis.layers.refresh();
                     }
                 );
         }

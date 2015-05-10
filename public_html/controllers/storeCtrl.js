@@ -25,6 +25,7 @@ angular.module('myApp.storeCtrl', [])
                          .success(function(response) {
                                apiService.fetching = false;
                                $scope.productList = $scope.productList.concat(apiService.parse(response));
+                                addthis.layers.refresh();
                              }
                          );
         }
@@ -41,6 +42,7 @@ angular.module('myApp.storeCtrl', [])
               .success(function(response) {
                     apiService.fetching = false;
                     $scope.productList = apiService.parse(response);
+                    addthis.layers.refresh();
                   }
               );
     }

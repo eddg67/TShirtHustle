@@ -11,8 +11,10 @@
             <div class="col-sm-3">
                 <div class="single-item">
                     <div class="single-item-header">
-                        <a href="{{ item.Link }}"><img src="{{ item['Big Image'] }}" alt="{{ item.Name }}"></a>
+                        <a target="_blank" href="{{ item.Link }}"><img src="{{ item['Big Image'] }}" alt="{{ item.Name }}"></a>
                     </div>
+                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                    <div class="addthis_native_toolbox"></div>
                     <div class="single-item-body">
                         <p class="single-item-title">{{ item.Name }}</p>
                         <p class="single-item-price">
@@ -20,8 +22,8 @@
                         </p>
                     </div>
                     <div class="single-item-caption">
-                        <a class="add-to-cart pull-left" href="{{ item.Link }}"><i class="fa fa-shopping-cart"></i></a>
-                        <a class="beta-btn primary" href="{{ item.Link }}">Details <i class="fa fa-chevron-right"></i></a>
+                        <a class="add-to-cart pull-left" href="{{ item.Link }}" target="_blank"><i class="fa fa-shopping-cart"></i></a>
+                        <a class="beta-btn primary" href="{{ item.Link }}" target="_blank">Details <i class="fa fa-chevron-right"></i></a>
                         <div class="clearfix"></div>
                     </div>
                 </div>
