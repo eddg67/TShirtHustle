@@ -59,6 +59,14 @@ mongoClient.connect("mongodb://localhost:27017/ss_products", function(err, db) {
           res.sendfile('index.html');
 
         });
+
+         app.get('/store/:id',attachDB, function (req, res) {
+         console.log(req.route);
+         console.log(path.join(__dirname+'/stores.html'))
+                  res.sendfile(path.join(__dirname+'/public_html/index.html'));
+
+                });
+
         //API call For Stores
        router.route('/api/store/:id')
        .post(attachDB,function(req, res) {
@@ -167,24 +175,29 @@ mongoClient.connect("mongodb://localhost:27017/ss_products", function(err, db) {
         });
 
          app.get('/api/products',attachDB, function (req, res) {
-
-                  //res.contentType('application/json');
-                  var el = req.db.collection('products').find({"Big Image":{$ne:""}} ).limit(pageLimit).toArray(function(err, items) {
-                      lastItemId = items[items.length-1];
-                      console.log(lastItemId);
-                      res.send(items);
-                  })
-
-                });
+                var el = req.db.collection('products')
+                            .find({ $and:[{"Big Image":{$ne:""}},{"Name":new RegExp("T Shirt", 'i')}]} )
+                            .skip(skip).limit(pageLimit)
+                            .sort({"Organization":1})
+                            .toArray(function(err, items) {
+                                    lastItemId = items[items.length-1];
+                                     console.log(lastItemId);
+                                     res.send(items);
+                             });
+         });
         //,{'_id':{ $gt: lastItemId }}
         app.get('/api/products/:page',attachDB, function (req, res) {
           var pg = req.param("page");
           var skip = pg > 1 ? pageLimit * (pg-1) : 0;
-          var el = req.db.collection('products').find({"Big Image":{$ne:""}} ).skip(skip).limit(pageLimit).toArray(function(err, items) {
-             lastItemId = items[items.length-1];
-              console.log(lastItemId);
-              res.send(items);
-          })
+          var el = req.db.collection('products')
+                .find({ $and:[{"Big Image":{$ne:""}},{"Name":new RegExp("T Shirt", 'i')}]} )
+                .skip(skip).limit(pageLimit)
+                .sort({"Organization":1})
+                .toArray(function(err, items) {
+                         lastItemId = items[items.length-1];
+                          console.log(lastItemId);
+                          res.send(items);
+                      });
 
         });
         
