@@ -14,23 +14,28 @@ config(['$routeProvider', function($routeProvider) {
 $routeProvider.
       when('/search', {
         templateUrl: 'views/productList.html',
-        controller: 'productCtrl'
+        controller: 'productCtrl',
+        controllerAs:'product'
       }).
       when('/search/:Id', {
         templateUrl: 'views/productList.html',
-        controller: 'searchCtrl'
+        controller: 'searchCtrl',
+        controllerAs:'product'
       }).
       when('/store', {
               templateUrl: 'views/productList.html',
-              controller: 'productCtrl'
+              controller: 'productCtrl',
+              controllerAs:'product'
             }).
       when('/store/:Id', {
                templateUrl: 'views/productList.html',
-               controller: 'storeCtrl'
+               controller: 'storeCtrl',
+                controllerAs:'product'
              }).
       when('/', {
               templateUrl: 'views/productList.html',
-              controller: 'productCtrl'
+              controller: 'productCtrl',
+              controllerAs:'product'
             }).
       otherwise({
         redirectTo: '/'

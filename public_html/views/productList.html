@@ -1,12 +1,11 @@
-
-<div ng-if="productList.length == 0">
+<div ng-if="product.productList.length == 0">
     <h2>No Results found</h2>
 </div>
 
-<div ng-if="productList.length > 0" tagged-infinite-scroll="getMore()">
-    <h2>{{header}}</h2>
+<div ng-if="product.productList.length > 0" tagged-infinite-scroll="product.getMore()">
+    <h2>{{_self.header}}</h2>
     <!-- code to render a large video block-->
-    <div ng-repeat="items in productList" class="row">
+    <div ng-repeat="items in product.productList" class="row">
         <div ng-repeat="item in items" >
             <div class="col-sm-3">
                 <div class="single-item">

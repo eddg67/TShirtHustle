@@ -1,30 +1,42 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-angular.module('myApp.apiService', []).
-service('apiService',function($http){
-               this.fetching = false;
-               this.ended = false;
-               this.page = 1;
-               
-               this.fetch = function(route,page) {
-                      this.page++;
-                     if(!this.ended){
-                          this.fetching = true;
-                         return $http.get(route+'/'+page, { page : page })
+(function(){
 
-                     }
-               };
+'use strict';
 
-               this.parse = function(raw){
 
-                    var list = [];
-                    while(raw.length) {
-                        list.push(raw.splice(0,4));
-                    }
-                    return list;
-               };
+    angular.module('myApp.apiService', [])
+           .service('apiService',apiService);
 
-         });
+    apiService.$inject = ['$http'];
+
+    function apiService($http){
+            this.fetching = false;
+            this.fetch = fetch;
+            this.parse = parse;
+            this.post = post;
+
+            function fetch(route,page) {
+               this.page++;
+                if(!this.ended){
+                  this.fetching = true;
+                  return $http.get(route+'/'+page, { page : page })
+                  }
+             };
+
+            function post(route,data){
+                return $http.post(route, data)
+            }
+
+            function parse(raw){
+                var list = [];
+                   while(raw.length) {
+                      list.push(raw.splice(0,4));
+                }
+                  return list;
+           };
+    }
+
+
+})();
+
+
+

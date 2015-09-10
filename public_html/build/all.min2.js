@@ -1,0 +1,3 @@
+). when('/search/:Id',{templateUrl:'views/productList.html',controller: 'searchCtrl'}). when('/store',{templateUrl:'views/productList.html',controller: 'productCtrl'}). when('/store/:Id',{templateUrl:'views/productList.html',controller: 'storeCtrl'}). when('/',{templateUrl:'views/productList.html',controller: 'productCtrl'}). otherwise({redirectTo:'/'}; $scope.templates = [{name:'contact',url: 'views/contactForm.html'});
+
+__ESCAPED_SOURCE_END_CLEAN_CSS__

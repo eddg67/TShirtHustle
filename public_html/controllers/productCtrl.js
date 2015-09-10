@@ -1,27 +1,33 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-angular.module('myApp.productCtrl', ['ngRoute'])
 
-.controller('productCtrl', ['$scope', '$http', 'apiService',function($scope,$http,apiService) {
-    $scope.header = "Top Sellers";
-    $scope.templates = [{ name: 'templateCC', url: 'views/productList.html'}];
-    $scope.page = 1;
-    $scope.productList = [];
+(function(){
+
+'use strict';
+
+
+angular.module('myApp.productCtrl', [])
+.controller('productCtrl', productCtrl);
+
+productCtrl.$inject = ['$log','apiService'];
+
+function productCtrl($log,apiService){
+    var _self = this;
+    _self.header = "Top Sellers";
+    _self.page = 1;
+    _self.productList = [];
+    _self.getMore = getMore;
+
+    load();
 
       // Fetch more items
-      $scope.getMore = function() {
-
-        ga('send', 'event','Category','products','product scroll','/products/'+$scope.page);
+    function getMore() {
+        ga('send', 'event','Category','products','product scroll','/products/'+_self.page);
 
         if(!apiService.fetching){
-            $scope.page++;
-            apiService.fetch("/api/products",$scope.page)
+            _self.page++;
+            apiService.fetch("/api/products",_self.page)
                 .success(function(response) {
                       apiService.fetching = false;
-                      $scope.productList = $scope.productList.concat(apiService.parse(response));
+                      _self.productList = _self.productList.concat(apiService.parse(response));
                        addthis.layers.refresh();
                     }
                 );
@@ -29,15 +35,22 @@ angular.module('myApp.productCtrl', ['ngRoute'])
 
       };
 
+    function load(){
+        apiService.fetch("/api/products",_self.page)
+              .success(function(response) {
+                    apiService.fetching = false;
+                    console.log($log)
+                    _self.productList = apiService.parse(response);
+                  }
+              );
+    }
 
-    apiService.fetch("/api/products",$scope.page)
-      .success(function(response) {
-            apiService.fetching = false;
-            $scope.productList = apiService.parse(response);
-          }
-      );
+}
 
 
 
-}]);
+})();
+
+
+
 
