@@ -13,6 +13,8 @@
             this.fetch = fetch;
             this.parse = parse;
             this.post = post;
+            this.get = get;
+            var defaultCount = 4;
 
             function fetch(route,page) {
                this.page++;
@@ -22,14 +24,23 @@
                   }
              };
 
+              function get(route) {
+               this.page++;
+                if(!this.ended){
+                  this.fetching = true;
+                  return $http.get(route)
+                  }
+             };
+
             function post(route,data){
                 return $http.post(route, data)
             }
 
-            function parse(raw){
+            function parse(raw,count){
                 var list = [];
+                var rowCount = !count ? defaultCount : count;
                    while(raw.length) {
-                      list.push(raw.splice(0,4));
+                      list.push(raw.splice(0,rowCount));
                 }
                   return list;
            };

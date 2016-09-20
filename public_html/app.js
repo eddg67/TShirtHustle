@@ -4,36 +4,44 @@
 angular.module('myApp', [
   'ngRoute',
   'tagged.directives.infiniteScroll',
+  'myApp.categoryCtrl',
   'myApp.productCtrl',
   'myApp.searchCtrl',
   'myApp.storeCtrl',
   'myApp.contactCtrl',
+  'myApp.detailCtrl',
   'myApp.apiService'
 ]).
-config(['$routeProvider', function($routeProvider) {
+config(['$locationProvider','$routeProvider', function($locationProvider,$routeProvider) {
+$locationProvider.html5Mode(true);
 $routeProvider.
+      when('/detail/:Id', {
+        templateUrl: './../views/detail.html',
+        controller: 'detailCtrl',
+        controllerAs:'detail'
+      }).
       when('/search', {
-        templateUrl: 'views/productList.html',
-        controller: 'productCtrl',
+        templateUrl: './../views/productList.html',
+        controller: 'searchCtrl',
         controllerAs:'product'
       }).
       when('/search/:Id', {
-        templateUrl: 'views/productList.html',
+        templateUrl: './../views/productList.html',
         controller: 'searchCtrl',
         controllerAs:'product'
       }).
       when('/store', {
-              templateUrl: 'views/productList.html',
+              templateUrl: './../views/productList.html',
               controller: 'productCtrl',
               controllerAs:'product'
             }).
       when('/store/:Id', {
-               templateUrl: 'views/productList.html',
+               templateUrl: './../views/productList.html',
                controller: 'storeCtrl',
                 controllerAs:'product'
              }).
       when('/', {
-              templateUrl: 'views/productList.html',
+              templateUrl: './../views/productList.html',
               controller: 'productCtrl',
               controllerAs:'product'
             }).

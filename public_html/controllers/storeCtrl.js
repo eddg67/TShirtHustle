@@ -40,7 +40,7 @@ function storeCtrl($routeParams,apiService) {
         apiService.fetch(path,_self.page)
             .success(function(response) {
                  apiService.fetching = false;
-                 _self.productList = apiService.parse(response);
+                 _self.productList = apiService.parse(response,3);
                   addthis.layers.refresh();
             }
         );

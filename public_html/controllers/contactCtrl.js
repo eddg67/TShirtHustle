@@ -1,34 +1,40 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+(function(){
 
+'use strict';
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 angular.module('myApp.contactCtrl', [])
+.controller('contactCtrl', contactCtrl);
 
-.controller('contactCtrl', ['$scope','$http',function($scope,$http) {
-    //$scope.user = {};
-    $scope.templates = [{ name: 'contact', url: 'views/contactForm.html'}];
-    $scope.getEmail = function(user) {
-        console.log(user);
-        
-          $http.post("/contact",{email:user.email}).
-            success(function(data, status, headers, config) {
-            // this callback will be called asynchronously
-            // when the response is available
-          }).
-          error(function(data, status, headers, config) {
-            // called asynchronously if an error occurs
-            // or server returns response with an error status.
-          });
+contactCtrl.$inject = ['apiService'];
+
+function contactCtrl(apiService) {
+    var _self = this;
+    var user = {email:'',name:''}
+    _self.user = user;
+    _self.getEmail = getEmail;
+   
+     function getEmail(name,email) {
+        console.log(name);console.log(email);
+        if(!email || !name){
+            alert("Please fill in form prior to submitting.")
+            return false;
+        }
+        user.email = email
+        user.name = name
+        apiService.post("/contact",user)
+            .success(function(response) {
+                 apiService.fetching = false;
+                 console.log(response);
+                
+            }
+        );
           
       };
+}
+})();
 
-}]);
+
+
+
+
 

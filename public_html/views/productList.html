@@ -6,14 +6,51 @@
     <h2>{{_self.header}}</h2>
     <!-- code to render a large video block-->
     <div ng-repeat="items in product.productList" class="row">
+ <div ng-repeat="item in items" >
+                    <!--First columnn-->
+                        <div class="col-sm-4 card-item">
+                            <!--Card-->
+                            <div class="card ">
+
+                                <!--Card image-->
+                                <div class="view overlay hm-white-slight">
+                                    <img src="{{ item['Big Image'] }}" class="img-fluid" alt="">
+
+                                    <a target="_blank" href="/detail/{{ item.productId }}"> 
+                                        <div class="mask"></div>
+                                    </a>
+                                </div>
+                                <!--/.Card image-->
+
+                                <!--Card content-->
+                                <div class="card-block">
+                                    <!--Title-->
+                                    <h4 class="card-title">{{ item.Name }}</h4>
+                                    <!--Text-->
+                                    <p class="card-text">{{ item['Short Description']  }}</p>
+                                      <a class="btn btn-primary" href="{{ item.Link}}"> 
+                                        Buy now for ${{ item.Price }}
+                                    </a>
+                                </div>
+                                <!--/.Card content-->
+
+                            </div>
+                            <!--/.Card-->
+                        </div>
+                 
+                        <!--First columnn-->
+                        
+
+  <!--<div class="addthis_native_toolbox"></div>-->
+
+<!--
         <div ng-repeat="item in items" >
             <div class="col-sm-3">
                 <div class="single-item">
                     <div class="single-item-header">
                         <a target="_blank" href="{{ item.Link }}"><img src="{{ item['Big Image'] }}" alt="{{ item.Name }}"></a>
                     </div>
-                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                    <!--<div class="addthis_native_toolbox"></div>-->
+                 
                     <div class="single-item-body">
                         <p class="single-item-title">{{ item.Name }}</p>
                         <p class="single-item-price">
@@ -30,7 +67,12 @@
             </div>
 
         </div>
+-->
+
+        </div>
+
     </div>
+
 </div>
 
 					
