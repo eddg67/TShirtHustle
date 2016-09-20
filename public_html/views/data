@@ -1,0 +1,133 @@
+var myDatatables = (function(){
+
+
+	var myObj = {
+    "language": {
+      "zeroRecords": "Nothing found",
+      "infoEmpty": "No records available"
+    },
+  	"processing": true,
+    "serverSide": true,
+    "ajax": {
+        "url": "/admin/dashboard_query.php",
+    },
+    "order": [
+        [0, 'desc']
+    ],
+    "lengthMenu":[[10, 25, 50,75, 100, 200, 365, -1], [10, 25, 50,75, 100, 200, 365, "All"]],
+    "pageLength": 30,
+    "responsive": true,
+    "searching": false,
+    "drawCallback": function(settings) {
+                          var pgr = $(settings.nTableWrapper).find('.dataTables_paginate');
+                          if(settings._iDisplayLength >= settings._iRecordsTotal || settings._iDisplayLength == '-1'){
+                              pgr.hide();
+                               if(settings._iRecordsTotal <= 10){
+                                   $('#example_length').hide();
+                              }else{
+                  			 $('#example_length').show();
+                  		}
+                          }
+                          else{
+                              pgr.show();
+                          }
+                },
+
+       "footerCallback": function(row, data, start, end, display) {
+            var api = this.api();
+						 $(api.column(1).footer()).html(formatNumber(data[0]['total']['visitors']));
+            $(api.column(2).footer()).html(formatNumber(data[0]['total']['searches']));
+            $(api.column(3).footer()).html(formatNumber(data[0]['total']['clicks']));
+            $(api.column(4).footer()).html(currencyFormat(data[0]['total']['rpm']));
+            $(api.column(5).footer()).html(data[0]['total']['ctr'] + '%');
+            $(api.column(6).footer()).html(currencyFormat(data[0]['total']['rpc']));
+            $(api.column(7).footer()).html(currencyFormat(data[0]['total']['revenue']));
+        },
+
+      "columnDefs": [{
+              "targets": 0,
+              render: function(data, type, full) {
+                  return '<a href="/dashboard/reports/index.php/?action=domains&start_date=' + data + '">' + data + '</a>';
+              },
+              "className": "dt-body-center"
+              },
+
+              {
+                  "targets": [1, 2, 3, 4, 5, 6, 7],
+                  "className": "dt-body-right"
+              },
+              {
+                  "targets": [1, 2, 3],
+                  render: function(data, type, full) {
+                      return formatNumber(data);
+                  }
+              },
+              {
+                  "targets": [5],
+                  render: function(data, type, full) {
+                      return data + '%';
+                  }
+              },
+              {
+                  "targets": [4, 6, 7],
+                  render: function(data, type, full) {
+                      return currencyFormat(data);
+                  }
+              }
+       ],
+      "dom": '<"dataTables_title"><"dataTables_timeframe"><"dataTables_length">frtip'
+	};
+	function showPeriods(table) {
+		 var id = 3;
+
+	    $('.container').on('change','#periodStats', function () {
+
+		   var period = $('select[name="period"] option:selected').val();
+		if(period == 'daily'){
+        		     table.api().ajax.url( 'dashboard_query.php?id='+id ).load();
+        	}
+       		 else if(period=='weekly'){
+             		table.api().ajax.url( 'weekly_query.php' ).load();
+       		 }
+        	else{
+       		     	table.api().ajax.url( '/admin/users/donny/datatables_dashboard_monthly_query.php' ).load();
+       		 }
+   		 } );
+
+        //	$("div.dataTables_timeframe").html('<div><label>Periods </label><select id="periodStats" name="period"><option value="daily">Daily</option><option value="monthly">Monthly</option><option value="weekly">Weekly</option></select></div>');
+        $("div.dataTables_length").html(
+          '<div id="example_length" class="tooltips" data-container="body" data-placement="bottom" data-original-title="Change number of rows displayed"><div class="btn-group"><a class="btn btn-default btn-sm dropdown-toggle" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" aria-expanded="false">  Display: <span style="font-weight:600;">50</span>  <i class="fa fa-angle-down"></i></a><ul class="dropdown-menu pull-right"><li><a href="javascript:;"><span class="details"><span class="label " style="font-weight: 600;font-size: 16px;color: #666;padding: 0px 0px 0px 6px;"> 25 </span>&nbsp;rows per page</span></a></li><li class="divider"></li><li><a href="javascript:;"><span class="label " style="font-weight: 600;font-size: 16px;color: #666;padding: 0px 0px 0px 6px;"> 50 </span>&nbsp;rows per page</a></li><li class="divider"></li><li><a href="javascript:;"><span class="label " style="font-weight: 600;font-size: 16px;color: #666;padding: 0px 0px 0px 6px;">75</span>&nbsp;rows per page</a></li><li class="divider"></li><li><a href="javascript:;"><span class="label" style="font-weight: 600;font-size: 16px;color: #666;padding: 0px 0px 0px 6px;">100</span>&nbsp;rows per page</a></li><li class="divider"></li><li><a href="javascript:;"><span class="label" style="font-weight: 600;font-size: 16px;color: #666;padding: 0px 0px 0px 6px;">All</span>&nbsp;rows</a></li></ul></div></div>'
+        );
+
+        $("div.dataTables_timeframe").html(
+          '<div class="btn-group tooltips" data-container="body" data-placement="bottom" data-original-title="Export table data"><a class="btn btn-default btn-sm dropdown-toggle" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">  Export <i class="fa fa-angle-down"></i></a><ul class="dropdown-menu pull-right"><li><a href="javascript:;"><span class="details"><span class="label label-warning" style="width: 40px;display: inline-block;padding: 6px;"> XML </span>&nbsp;Export to XML</span></a></li><li class="divider"></li><li><a href="javascript:;"><span class="label label-danger"  style="width: 40px;display: inline-block;padding: 6px;"> CSV </span>&nbsp;Export to CSV</a></li><li class="divider"></li><li><a href="javascript:;"><span class="label label-info" style="width: 40px;display: inline-block;padding: 6px;"> JSON </span>&nbsp;Export to JSON</a></li></ul></div>'
+        );
+
+ 	};
+
+	return{
+
+	    init:function(obj){
+
+	     if(obj.columnFormat){
+           $.each(obj.columnFormat, function(index, item) {
+                    myObj.columnDefs[index]["className"] = (item.align == "left") ? "dt-body-left" : "dt-body-right";
+                    myObj.columnDefs[index]["targets"] = (item.column == "left") ? "dt-body-left" : "dt-body-right";
+              });
+            }
+
+        	for(var propt in obj){
+
+        	    if(!obj.columnFormat && myObj[propt])
+        	    {
+                    myObj[propt] = obj[propt]
+        	    }
+            }
+
+            return myObj;
+	    }
+
+
+	};
+
+})();

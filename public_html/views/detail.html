@@ -1,0 +1,80 @@
+
+     <!--First row-->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!--Product-->
+              
+
+                          <div class="product-wrapper">
+
+
+                                <!--Featured image-->
+                                <div class="view overlay hm-white-light z-depth-1-half">
+                                  <img src="{{ detail.product['Big Image'] }}" class="img-fluid " alt="">
+                                 
+                                    <a href="{{ detail.product.Link}}"> 
+                                    <div class="mask">
+                                    </div>
+                                      </a>
+                                      <a href="{{ detail.product.Link}}"> 
+                                    <h3 class="price"><span class="label rgba-green-strong">${{ detail.product.Price }}</span>
+                                    </h3>
+                                    </a>
+                                </div>
+                                <!--/.Featured image-->
+
+                                <br>
+                                <div class="addthis_native_toolbox"></div>
+                                <!--Product data-->
+                                <h2 class="h2-responsive">{{ detail.product.Name}}</h2>
+                                <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                                    <a class="btn btn-primary" href="{{ detail.product.Link }}"> 
+                                        Buy now for ${{ detail.product.Price }}
+                                    </a>
+
+                                <hr>
+                                {{ detail.product['Short Description'] }}</p>
+
+                                <ul class="rating inline-ul">
+                                    <li><i class="fa fa-star amber-text"></i></li>
+                                    <li><i class="fa fa-star amber-text"></i></li>
+                                    <li><i class="fa fa-star amber-text"></i></li>
+                                    <li><i class="fa fa-star amber-text"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                </ul>
+
+                        </div>
+  <!--Product-->
+                 
+
+                        </div>
+                    </div>
+                    <!--/.First row-->
+                     <div class="row">
+                         <script>
+                          window.fbAsyncInit = function() {
+                            FB.init({
+                              appId      : '1057078847740396',
+                              xfbml      : true,
+                              version    : 'v2.7'
+                            });
+                          };
+
+                          (function(d, s, id){
+                             var js, fjs = d.getElementsByTagName(s)[0];
+                             if (d.getElementById(id)) {return;}
+                             js = d.createElement(s); js.id = id;
+                             js.src = "//connect.facebook.net/en_US/sdk.js";
+                             fjs.parentNode.insertBefore(js, fjs);
+                           }(document, 'script', 'facebook-jssdk'));
+                        </script>
+
+                        <!-- Your embedded comments code -->
+                        <div class="col-sm-12 col-md-12" id="fb-wrapper">
+                                        <div class="fb-like" data-send="true" data-width="450" data-show-faces="true"></div>
+                                        <div class="fb-comments" data-href="http://tshirthustle.com/detail/{{detail.product.productId}}" data-num-posts="4" data-width="620"></div>
+                        </div>
+                    </div>
+
+
+

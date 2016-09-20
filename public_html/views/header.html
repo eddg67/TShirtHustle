@@ -1,0 +1,70 @@
+  <div id="header">
+    <div class="header-top">
+      <div class="container">
+        <div class="pull-left auto-width-left">
+          <ul class="top-menu menu-beta l-inline">
+            <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+            <li><a href="/#/store"><i class="fa fa-sitemap"></i> Stores</a></li>
+          </ul>
+        </div>
+        <div class="pull-right auto-width-right">
+          <ul class="top-details menu-beta l-inline">
+          <!--  <li><a href="#"><i class="fa fa-user"></i> Your Account</a></li> -->
+          </ul>
+        </div>
+        <div class="clearfix"></div>
+      </div> <!-- .container -->
+    </div> <!-- .header-top -->
+    <div class="header-body">
+      <div class="container beta-relative">
+        <div class="pull-left">
+          <a href="index.html" id="logo"><img src="img/logo.png" alt="TSHIRT HUSTLE Funny cool Tshirts"></a>
+                                        <span class="slogan"><h2>TSHIRTHUSTLE.COM Shop Top Tshirt retailers!</h2></span>
+        </div>
+        <div class="pull-right beta-components space-left ov">
+          <div class="space10">&nbsp;</div>
+          <div class="beta-comp" ng-controller="searchCtrl as search">
+            <form role="search" id="searchform">
+                  <input type="text" ng-model="term" value="" name="s" id="s" placeholder="Search entire store here..." />
+                  <button class="fa fa-search" id="searchsubmit" ng-click="search.search(term)"></button>
+            </form>
+          </div>
+
+          <div class="beta-comp">
+             <!-- .cart -->
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div> <!-- .container -->
+    </div> <!-- .header-body -->
+    <div class="header-bottom">
+      <div class="container">
+        <a class="visible-xs beta-menu-toggle pull-right" href="#">
+                                    <span class='beta-menu-toggle-text'>Menu</span> 
+                                    <i class="fa fa-bars"></i>
+                                </a>
+        <div class="visible-xs clearfix"></div>
+        <nav class="main-menu">
+          <ul class="l-inline ov">
+            <li><a href="/">Home</a>
+              <ul class="sub-menu">
+              <!--  <li><a href="home_10.html">Home Portfolio</a></li> -->
+              
+              </ul>
+            </li>
+
+            <li><a href="/#/store">Stores</a>
+              <ul class="sub-menu">
+                                <li><a href="/#/store/5108">BustedTees</a></li>
+                                <li><a href="/#/store/14592">Crazy Dog Tshirts</a></li>
+                                <li><a href="/#/store/49310">Zazzle</a></li>
+              </ul>
+            </li>
+            <!--<li><a href="contacts.html">Contact</a></li>-->
+
+          </ul>
+          <div class="clearfix"></div>
+        </nav>
+      </div> <!-- .container -->
+    </div> <!-- .header-bottom -->
+  </div> 

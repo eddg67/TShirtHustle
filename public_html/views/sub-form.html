@@ -1,0 +1,21 @@
+           <h4>Subscription form:</h4>
+                        <br>
+                        <div class="card subform">
+                            <div class="card-block" ng-controller="contactCtrl as contact">
+                            <form>
+                                <p><strong>Subscribe to our newsletter</strong></p>
+                                <p>Once a week we will send you a summary of the most useful news</p>
+                                <div class="md-form">
+                                <i class="fa fa-user prefix"></i>
+                                <input type="text" id="name" class="form-control" ng-model="name">
+                                    <label for="name">Your name</label>
+                                </div>
+                                <div class="md-form">
+                                    <i class="fa fa-envelope prefix"></i>
+                                    <input type="email" pattern="[^ @]*@[^ @]*" id="email" class="form-control" ng-model="email">
+                                    <label for="email">Your email</label>
+                                </div>
+                                <button class="btn btn-primary" ng-click="contact.getEmail(name,email)"> Submit</button>
+                            </form>
+                            </div>
+                        </div>
