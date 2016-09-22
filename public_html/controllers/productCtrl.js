@@ -27,7 +27,7 @@ function productCtrl($log,apiService){
             apiService.fetch("/api/products",_self.page)
                 .success(function(response) {
                       apiService.fetching = false;
-                      _self.productList = _self.productList.concat(apiService.parse(response));
+                      _self.productList = _self.productList.concat(apiService.parse(response,3));
                        addthis.layers.refresh();
                     }
                 );

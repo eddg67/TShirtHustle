@@ -9,14 +9,6 @@ var expect = require('gulp-expect-file');
 gulp.task('scripts', function() {
 
 var files = [
-    //'public_html/components/version/modernizr/modernizr.js',
-    //'public_html/components/version/jquery.bxslider/jquery.bxslider.min.js',
-    //'public_html/components/version/jquery.colorbox/jquery.colorbox.js',
-    //'public_html/components/version/jquery.themepunch/jquery.themepunch.tools.js',
-    //'public_html/components/version/jquery.themepunch/jquery.themepunch.revolution.js',
-    //'public_html/components/version/waypoints/waypoints.js',
-    //'public_html/components/version/wow/wow.js',
-    //'public_html/components/version/Animo/Animo.js',
     'public_html/components/version/scripts/*.js',
     'public_html/components/version/angular/angular.js',
     'public_html/components/version/angular-route/angular-route.min.js',
@@ -37,7 +29,8 @@ var files = [
 gulp.task('css', function() {
 
 var files = [
-    'public_html/css/mdb.min.css'
+    'public_html/css/mdb.min.css',
+    'public_html/css/font-awesome.min.css'
     ];
     return gulp.src(files)
         .pipe(expect(files))

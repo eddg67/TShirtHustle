@@ -20,6 +20,9 @@ $routeProvider.
         controller: 'detailCtrl',
         controllerAs:'detail'
       }).
+       when('/about', {
+        templateUrl: './../views/about.html'
+      }).
       when('/search', {
         templateUrl: './../views/productList.html',
         controller: 'searchCtrl',

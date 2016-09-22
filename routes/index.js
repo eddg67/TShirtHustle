@@ -9,4 +9,8 @@
       res.sendfile(path.resolve('public_html/detail.html'));
     };
 
+    exports.about = function (req, res) {
+      res.sendfile(path.resolve('public_html/about.html'));
+    };
+
 

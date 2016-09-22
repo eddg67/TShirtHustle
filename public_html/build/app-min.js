@@ -22070,6 +22070,9 @@ $routeProvider.
         controller: 'detailCtrl',
         controllerAs:'detail'
       }).
+       when('/about', {
+        templateUrl: './../views/about.html'
+      }).
       when('/search', {
         templateUrl: './../views/productList.html',
         controller: 'searchCtrl',
@@ -22125,7 +22128,7 @@ $routeProvider.
             this.parse = parse;
             this.post = post;
             this.get = get;
-            var defaultCount = 4;
+            var defaultCount = 3;
 
             function fetch(route,page) {
                this.page++;
@@ -22307,7 +22310,7 @@ function productCtrl($log,apiService){
             apiService.fetch("/api/products",_self.page)
                 .success(function(response) {
                       apiService.fetching = false;
-                      _self.productList = _self.productList.concat(apiService.parse(response));
+                      _self.productList = _self.productList.concat(apiService.parse(response,3));
                        addthis.layers.refresh();
                     }
                 );

@@ -39,6 +39,8 @@ var expressMongoDb = require('express-mongo-db');
 
         app.get('/', index.index);
 
+        app.get('/about',index.about);
+
         app.get('/detail',index.detail);
         app.get('/detail/:id', index.detail);
 

@@ -14,7 +14,7 @@
             this.parse = parse;
             this.post = post;
             this.get = get;
-            var defaultCount = 4;
+            var defaultCount = 3;
 
             function fetch(route,page) {
                this.page++;
