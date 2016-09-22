@@ -3,21 +3,24 @@
 <!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Funny Cool and Crazy T Shirts | Tees Top Stores TSHIRTHUSTLE.COM </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Funny t-shirts on high quality soft t-shirt,cool designs from top online retailers, cool shirts and retro vintage tees" />
-    <meta name="keywords" content="funny t-shirts, funny t shirts, t-shirts,top online retailers, funny shirts, t shirts, funny tshirts, tshirts, funny tees, funny tee shirts, t shirt, t-shirt, tee shirts, shirts, hustle" />
-    <meta name="robots" content="index, follow" />
-    <link href='http://fonts.googleapis.com/css?family=Dosis:300,400' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+ <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Funny Cool and Crazy T Shirts | Tees Top Stores TSHIRTHUSTLE.COM </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Funny t-shirts on high quality soft t-shirt,cool designs from top online retailers, cool shirts and retro vintage tees" />
+  <meta name="keywords" content="funny t-shirts, funny t shirts, t-shirts,top online retailers, funny shirts, t shirts, funny tshirts, tshirts, funny tees, funny tee shirts, t shirt, t-shirt, tee shirts, shirts, hustle" />
+  <meta name="robots" content="index, follow" />
 
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css" />
+    <link href='http://fonts.googleapis.com/css?family=Abril+Fatface' rel='stylesheet' type='text/css'>
 
-    <link rel="stylesheet" href="./../build/all.min.css">
+ <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/css/bootstrap.min.css" integrity="sha384-MIwDKRSSImVFAZCVLtU0LMDdON6KVCrZHyVQQj6e8wIEJkW4tvwqXrbMIya1vriY" crossorigin="anonymous">
+
+<link rel="stylesheet" href="/css/mdb.min.css">
+ <!-- <link rel="stylesheet" href="/build/all.min.css"> -->
 
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -32,200 +35,173 @@
 
 </script>
 
+ <style rel="stylesheet">
+        /* TEMPLATE STYLES */
+        
+        main {
+            padding-top: 3rem;
+            padding-bottom: 2rem;
+        }
+
+        .logo {
+        font-family: 'Abril+Fatface', serif;
+        }
+        
+        .widget-wrapper {
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e0e0e0;
+            margin-bottom: 2rem;
+        }
+        
+        .reviews {
+            text-align: center;
+            border-top: 1px solid #e0e0e0;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 1rem;
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .price {
+            position: absolute;
+            left: 0;
+            top: 0;
+            margin-top: -2px;
+        }
+        
+        .price .label {
+            margin: 0;
+        }
+
+        .card-item{
+        }
+        .card-text{
+            margin-top: 2.5rem;
+          
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .card-title{
+
+        }
+
+        div.view.overlay{
+            max-height:18em;
+        }
+
+        div.card{
+           height: 35em;
+        }
+        div.card.subform{
+           height: 25em;
+        }
+    </style>
+
 </head>
 
 <body ng-app="myApp">
 
 
-<!--[if lt IE 7]>
-<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-<![endif]-->
+  <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
 
 
-<!-- #header -->
-<div id="header">
-    <div class="header-top">
+    <header>
+
+        <!--Navbar-->
+        <!-- #header -->
+        <div ng-include="'./../views/navbar-top.html'"></div>
+        <!--/.Navbar-->
+
+    </header>
+
+    <main>
+
+        <!--Main layout-->
         <div class="container">
-            <div class="pull-left auto-width-left">
-                <ul class="top-menu menu-beta l-inline">
-                    <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
-                    <li><a href="/#/store"><i class="fa fa-sitemap"></i> Stores</a></li>
-                </ul>
-            </div>
-            <div class="pull-right auto-width-right">
-                <ul class="top-details menu-beta l-inline">
-                    <!--	<li><a href="#"><i class="fa fa-user"></i> Your Account</a></li> -->
-                </ul>
-            </div>
-            <div class="clearfix"></div>
-        </div> <!-- .container -->
-    </div> <!-- .header-top -->
-    <div class="header-body">
-        <div class="container beta-relative">
-            <div class="pull-left">
-                <a href="index.html" id="logo"><img src="./../img/logo.png" alt="TSHIRT HUSTLE Funny cool Tshirts"></a>
-                <span class="slogan"><h2>TSHIRTHUSTLE.COM Shop Top Tshirt retailers!</h2></span>
-            </div>
-            <div class="pull-right beta-components space-left ov">
-                <div class="space10">&nbsp;</div>
-                <div class="beta-comp" ng-controller="searchCtrl as search">
-                    <form role="search" id="searchform">
-                        <input type="text" ng-model="term" value="" name="s" id="s" placeholder="Search entire store here..." />
-                        <button class="fa fa-search" id="searchsubmit" ng-click="search.search(term)"></button>
-                    </form>
-                </div>
+            <div class="row">
 
-                <div class="beta-comp">
-                    <!-- .cart -->
-                </div>
-            </div>
-            <div class="clearfix"></div>
-        </div> <!-- .container -->
-    </div> <!-- .header-body -->
-    <div class="header-bottom">
-        <div class="container">
-            <a class="visible-xs beta-menu-toggle pull-right" href="#">
-                <span class='beta-menu-toggle-text'>Menu</span>
-                <i class="fa fa-bars"></i>
-            </a>
-            <div class="visible-xs clearfix"></div>
-            <nav class="main-menu">
-                <ul class="l-inline ov">
-                    <li><a href="/">Home</a>
-                        <ul class="sub-menu">
-                            <!--	<li><a href="home_10.html">Home Portfolio</a></li> -->
+                <!--Sidebar-->
+                <div class="col-md-4">
 
-                        </ul>
-                    </li>
+                   <div class="widget-wrapper">
+                        <div ng-include="'./../views/side-banner.html'"></div>
+                    </div> 
 
-                    <li><a href="/#/store">Stores</a>
-                        <ul class="sub-menu">
-                            <li><a href="/#/store/5108">BustedTees</a></li>
-                            <li><a href="/#/store/14592">Crazy Dog Tshirts</a></li>
-                            <li><a href="/#/store/49310">Zazzle</a></li>
-                        </ul>
-                    </li>
-                    <!--<li><a href="contacts.html">Contact</a></li>-->
+                    <div class="widget-wrapper">
 
-                </ul>
-                <div class="clearfix"></div>
-            </nav>
-        </div> <!-- .container -->
-    </div> <!-- .header-bottom -->
-</div>
-
-<div class="container">
-    <div id="content">
-
-        <div class="main-content">SEARCH
-            <!--
-                <div class="fullwidthbanner-container" ng-include="'views/topSlider.html'"></div>
-                            <div class="space10">&nbsp;</div>
-            <!--slider-->
-            <!--<h2>Special Offers</h2>-->
-            <!--<div class="dg" ng-include="'views/topBanner.html'">-->
-            <!---->
-            <!--</div>-->
-
-            <div class="space50">&nbsp;</div>
-
-
-            <div ng-view></div>
-
-        </div> <!-- .maincontent -->
-
-        <div class="space50">&nbsp;</div>
-
-        <div class="dg" >
-            <div class="col-4 wow ">
-                <div class="beta-banner">
-                    <iframe width='286' height='125' src='http://www.sunfrogshirts.com/widget/sfwidget_sm.cfm?25110&ct=19,24,35,12,71,20,62,13,11,&key=&btn=1&btntxt=Buy Now' frameborder='0' allowfullscreen scrolling='no'></iframe>
+                      <div ng-include="'./../views/sub-form.html'"></div>
+             
+                    </div>
 
                 </div>
-            </div>
-            <div class="col-4 wow fadeInDown">
-                <div class="beta-banner">
-                    <iframe width='286' height='125' src='http://www.sunfrogshirts.com/widget/sfwidget_sm.cfm?25110&ct=19,24,35,12,71,20,62,13,11,&key=&btn=1&btntxt=Buy Now' frameborder='0' allowfullscreen scrolling='no'></iframe>
+                <!--/.Sidebar-->
+
+                <!--Main column-->
+                <div class="col-md-8">
+         <!--First row-->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="divider-new">
+                                <h2 class="h2-responsive">Results</h2>
+                            </div>
+                           <div ng-view></div>
+                        </div>
+                    </div>
+                    <!--/.First row-->
+                    <br>
+                    <hr class="extra-margins">
+
+                    <div ng-view></div>
+
 
                 </div>
-            </div>
-            <div class="col-4 wow fadeInDown">
-                <div class="beta-banner">
-                    <iframe width='286' height='125' src='http://www.sunfrogshirts.com/widget/sfwidget_sm.cfm?25110&ct=19,24,35,12,71,20,62,13,11,&key=&btn=1&btntxt=Buy Now' frameborder='0' allowfullscreen scrolling='no'></iframe>
+                <!--/.Main column-->
 
-                </div>
             </div>
         </div>
+        <!--/.Main layout-->
 
-    </div> <!-- content -->
-</div> <!-- .container -->
-<div ng-include="'./../views/footer.html'"></div><!-- #footer -->
+    </main>
 
+    <!--Footer-->
+    <footer class="page-footer center-on-small-only primary-color-dark">
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-
-<div class="copyright">
-    <div class="container">
-        <p class="pull-left">Privacy policy. (&copy;) <span id="cYr"></span>
-            <script>
-                            $('#cYr').html(new Date().getFullYear());
-                        </script></p>
-        <p class="pull-right pay-options">
-
-        </p>
-        <div class="clearfix"></div>
-    </div> <!-- .container -->
-</div> <!-- .copyright -->
-
-
-<script src="./../build/app-min-min.js"></script>
-<script>
-	 jQuery(document).ready(function($) {
-                'use strict';
-
-		
-var wow = new WOW(
-  {
-    boxClass:     'wow',      // animated element css class (default is wow)
-    animateClass: 'animated', // animation css class (default is animated)
-    offset:       150,          // distance to the element when triggering the animation (default is 0)
-    mobile:       false        // trigger animations on mobile devices (true is default)
-  }
-);
-wow.init();
+        <!--Footer Links-->
+        <div class="container-fluid">
+             <div ng-include="'./../views/footer.html'"></div><!-- #footer -->
+        </div>
+        <!--/.Copyright-->
+    </footer>
 
 
 
-$(function() {
-        // this will get the full URL at the address bar
-        var url = window.location.href;
 
-        // passes on every "a" tag
-        $(".main-menu a").each(function() {
-            // checks if its the same on the address bar
-            if (url == (this.href)) {
-                $(this).closest("li").addClass("active");
-				$(this).parents('li').addClass('parent-active');
-            }
-        });
-    }); 
-	
-	});
-
-	// Google Analytics
-
-	
-
-</script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="/build/app-min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/js/bootstrap.min.js" integrity="sha384-ux8v3A6CPtOTqOzMKiuo3d/DomGaaClxFYdCu2HPMBEkf6x2xiDyJ7gkXU0MWwaD" crossorigin="anonymous"></script>
 
 <!-- Go to www.addthis.com/dashboard to customize your tools -->
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-554f917335a9b47e" async="async"></script>
-<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-<script type="text/javascript">stLight.options({publisher: "0da9e436-8b78-496e-917c-45b6d27e6d48", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-554f917335a9b47e"></script>
 
 
+
+  <div class="copyright">
+        <div class="container">
+                    <p class="pull-left">Privacy policy. (&copy;) <span id="cYr"></span> 
+                        <script>
+                            $('#cYr').html(new Date().getFullYear());
+                        </script></p>
+            <p class="pull-right pay-options">
+                
+            </p>
+            <div class="clearfix"></div>
+        </div> <!-- .container -->
+    </div> <!-- .copyright -->
 
 </body>
 </html>
+
+   
