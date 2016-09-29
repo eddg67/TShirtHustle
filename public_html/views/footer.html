@@ -32,8 +32,8 @@
 					<div class="widget" ng-controller="contactCtrl as contactbottom">
 						<h4 class="widget-title">Newsletter Subscribe</h4>
 						<form class="">
-						<input type="text" name="name" ng-model="name" required>
-							<input type="email" name="email" ng-model="email" required>
+						<input type="text" name="name" ng-model="name" placeholder="Name" required>
+							<input type="email" name="email" ng-model="email" placeholder="Email" required>
 							<button class="pull-right" ng-click="contactbottom.getEmail(name,email)">Subscribe 
 							<i class="fa fa-chevron-right"></i></button>
 						</form>
