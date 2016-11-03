@@ -22060,6 +22060,7 @@ angular.module('myApp', [
   'myApp.storeCtrl',
   'myApp.contactCtrl',
   'myApp.detailCtrl',
+  'myApp.pageCtrl',
   'myApp.apiService'
 ]).
 config(['$locationProvider','$routeProvider', function($locationProvider,$routeProvider) {
@@ -22254,9 +22255,10 @@ function detailCtrl($routeParams,apiService) {
     var _self = this;
     _self.Id = $routeParams.Id;
     var path = "/api/detail/" + _self.Id;
-    var menuList = {5108:'BustedTees',14592:"Crazy Dog Tshirts",49310:'Zazzle'};
+    var menuList = {14592:"Crazy Dog Tshirts",49310:'Zazzle'};
     _self.header = path;
    _self.product = null;
+   _self.page = angular.element('html').scope().page;
 
     function load() {
         ga('send', 'pageview','/detail/' + _self.Id);
@@ -22266,6 +22268,10 @@ function detailCtrl($routeParams,apiService) {
                  apiService.fetching = false;
                  console.log(response);
                  _self.product = response;//apiService.parse(response);
+                 _self.page.title = _self.product.Name;
+                  _self.page.description = _self.product['Short Description'];
+                  _self.page.img = _self.product['Big Image'];
+              
             }
         );
     }
@@ -22275,6 +22281,35 @@ function detailCtrl($routeParams,apiService) {
      }
 }
 
+})();
+
+
+
+
+
+
+(function(){
+
+'use strict';
+
+
+angular.module('myApp.pageCtrl', [])
+.controller('pageCtrl', pageCtrl);
+
+pageCtrl.$inject = ['$log'];
+
+function pageCtrl($log){
+    var _self = this;
+    _self.header = "Top Sellers";
+    _self.title = "Funny t-shirts on high quality soft t-shirt,cool designs from top online retailers, cool shirts and retro vintage tees"
+    _self.description = 'Funny t-shirts on high quality soft t-shirt,cool designs from top online retailers, cool shirts and retro vintage tees';
+    _self.img = '';
+
+     function setTitle(str){
+        _self.title = str;
+    }
+    
+}
 })();
 
 

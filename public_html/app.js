@@ -10,6 +10,7 @@ angular.module('myApp', [
   'myApp.storeCtrl',
   'myApp.contactCtrl',
   'myApp.detailCtrl',
+  'myApp.pageCtrl',
   'myApp.apiService'
 ]).
 config(['$locationProvider','$routeProvider', function($locationProvider,$routeProvider) {

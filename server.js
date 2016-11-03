@@ -8,12 +8,14 @@
 var http = require('http'),
     express = require('express'),
     path = require('path'),
+    vhost = require('vhost'),
     bodyParser = require('body-parser'),
     crypto = require('crypto'),
     api = require('./routes/api'),
     search = require('./routes/search'),
     index = require('./routes/index'),
     store = require('./routes/store'),
+    
     config = require('./config')();
 
 var expressMongoDb = require('express-mongo-db');
@@ -22,15 +24,23 @@ var expressMongoDb = require('express-mongo-db');
  var lastItemId=0;
  var pageLimit = 24;
 
+ function createVirtualHost(domainName, dirPath) {
+    return vhost(domainName, express.static(path.join(__dirname, dirPath)));
+}
+var adminHist = createVirtualHost("admin.localhost:4000", 'public_html');
+var baseHost = createVirtualHost("localhost", 'public_html');
 
         var app = module.exports = express();
         app.use(expressMongoDb('mongodb://localhost:27017/ss_products'));
         var router = express.Router();
         app.use(router);
 
-        app.set('port', config.port|| 3000);
-
-        app.use(express.static(path.join(__dirname, 'public_html')));
+        app.set('port', config.port);
+        
+        console.log(config);
+        app.use(adminHist);
+        app.use(baseHost);
+        //app.use(express.static(path.join(__dirname, 'public_html')));
         app.use( bodyParser.json() );       // to support JSON-encoded bodies
         app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
             extended: true

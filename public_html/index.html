@@ -2,17 +2,18 @@
 <!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> 
+<html lang="en" ng-app="myApp" class="no-js" ng-controller="pageCtrl as page"> <!--<![endif]-->
  <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Funny Cool and Crazy T Shirts | Tees Top Stores TSHIRTHUSTLE.COM </title>
+  <title>{{page.title}} </title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Funny t-shirts on high quality soft t-shirt,cool designs from top online retailers, cool shirts and retro vintage tees" />
+  <meta name="description" content= {{page.description}} />
   <meta name="keywords" content="funny t-shirts, funny t shirts, t-shirts,top online retailers, funny shirts, t shirts, funny tshirts, tshirts, funny tees, funny tee shirts, t shirt, t-shirt, tee shirts, shirts, hustle" />
   <meta name="robots" content="index, follow" />
 
-    <link href='http://fonts.googleapis.com/css?family=Abril+Fatface' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Abril+Fatface+Roboto' rel='stylesheet' type='text/css'>
 
  <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
