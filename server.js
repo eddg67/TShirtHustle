@@ -28,7 +28,7 @@ var expressMongoDb = require('express-mongo-db');
     return vhost(domainName, express.static(path.join(__dirname, dirPath)));
 }
 var adminHist = createVirtualHost("admin.localhost:4000", 'public_html');
-var baseHost = createVirtualHost("localhost", 'public_html');
+var baseHost = createVirtualHost(config.host, 'public_html');
 
         var app = module.exports = express();
         app.use(expressMongoDb('mongodb://localhost:27017/ss_products'));

@@ -6,6 +6,7 @@
 var config = {
     local: {
         mode: 'local',
+        host : 'localhost',
         port: 3000,
         shareSale :{
             myAffiliateID : '1014588',
@@ -15,6 +16,7 @@ var config = {
     },
     staging: {
         mode: 'staging',
+        host : 'tshirthustle.com',
         port: 4000,
         shareSale :{
             myAffiliateID : '1014588',
@@ -22,9 +24,10 @@ var config = {
             APISecretKey : 'ENi0iz7z1ZBqnp3jIKi2ms2h5AYeqs1i'
         }
     },
-    production: {
-        mode: 'production',
-        port: 80,
+    pro: {
+        mode: 'pro',
+        host : 'tshirthustle.com',
+        port: 3000,
         shareSale :{
             myAffiliateID : '1014588',
             APIToken : '10ecldpyOJEVk1za',

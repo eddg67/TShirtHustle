@@ -14,7 +14,8 @@
     "shelljs": "^0.2.6",
     "oauth": "0.9.8",
     "forever":"latest",
-    "vhost":"latest"
+    "vhost":"latest",
+    "express-metatag":"latest"
   },
   "scripts": {
     "postinstall": "bower install",

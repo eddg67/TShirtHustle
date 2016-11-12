@@ -6,6 +6,7 @@
 
 
     exports.detail = function (req, res) {
+      id = req.param("id");
       res.sendfile(path.resolve('public_html/detail.html'));
     };
 
