@@ -15,14 +15,19 @@ var http = require('http'),
     search = require('./routes/search'),
     index = require('./routes/index'),
     store = require('./routes/store'),
+    expressMongoDb = require('express-mongo-db'),
     
     config = require('./config')();
 
-var expressMongoDb = require('express-mongo-db');
+
+    var ejs = require('ejs');
+ejs.open = '{{';
+ejs.close = '}}';
 
  var items;
  var lastItemId=0;
  var pageLimit = 24;
+
 
  function createVirtualHost(domainName, dirPath) {
     return vhost(domainName, express.static(path.join(__dirname, dirPath)));
@@ -35,16 +40,22 @@ var baseHost = createVirtualHost(config.host, 'public_html');
         var router = express.Router();
         app.use(router);
 
-        app.set('port', config.port);
+      
         
         console.log(config);
-        app.use(adminHist);
-        app.use(baseHost);
+        //app.use(adminHist);
+       
+        
         //app.use(express.static(path.join(__dirname, 'public_html')));
         app.use( bodyParser.json() );       // to support JSON-encoded bodies
         app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
             extended: true
         }));
+
+        app.set('view engine', 'ejs')
+        app.set('port', config.port);
+
+         app.use(baseHost);
 
 
         app.get('/', index.index);

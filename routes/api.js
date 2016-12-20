@@ -108,7 +108,7 @@
 
                      }).limit(1)
                      .toArray(function(err, items) {
-                           console.log(items);
+                          // console.log(items);
                           
                            res.send(items[0]);
                         });
