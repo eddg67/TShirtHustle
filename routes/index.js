@@ -25,11 +25,19 @@
                            //console.log(items);
                            product = items[0];
                             console.log(product);
-                          
-                             var opts = {
+                            if(product){}
+
+                             var opts = (product)? 
+                             {
                               title: product['Name'],
                               description:product['Short Description'],
                               img: product['Big Image']
+                              }
+                              :
+                              {   
+                                img:'',              
+                                title: 'Great Tees TShirt Hustle',
+                                description:'funny t-shirts, funny t shirts, t-shirts,top online retailers, funny shirts, t shirts, funny tshirts, tshirts, funny tees, funny tee shirts, t shirt, t-shirt, tee shirts, shirts, hustle'
                               };
                             res.render(path.resolve('public_html/pages/detail'),opts);
                           
