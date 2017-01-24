@@ -14,7 +14,9 @@
     "oauth": "0.9.8",
     "forever":"latest",
     "vhost":"latest",
-    "ejs":"latest"
+    "ejs":"latest",
+    "node-twitter-api":"latest",
+    "bluebird":"latest"
   },
   "scripts": {
     "prestart": "gulp",

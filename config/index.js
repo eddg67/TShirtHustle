@@ -12,6 +12,11 @@ var config = {
             myAffiliateID : '1014588',
             APIToken : '10ecldpyOJEVk1za',
             APISecretKey : 'ENi0iz7z1ZBqnp3jIKi2ms2h5AYeqs1i'
+        },
+        twitter :{
+            consumerKey: 'wdaBHumoamxEdAjAmEc4KYo8N',
+            consumerSecret: '6zu64D3Lg0EGPxnhyj5OxMuHX6wzQAFWW9US2xF8NYSqdcEfKx',
+            callback: 'http://localhost:3000/twitter'
         }
     },
     staging: {
@@ -22,6 +27,11 @@ var config = {
             myAffiliateID : '1014588',
             APIToken : '10ecldpyOJEVk1za',
             APISecretKey : 'ENi0iz7z1ZBqnp3jIKi2ms2h5AYeqs1i'
+        },
+        twitter :{
+            consumerKey: 'wdaBHumoamxEdAjAmEc4KYo8N',
+            consumerSecret: '6zu64D3Lg0EGPxnhyj5OxMuHX6wzQAFWW9US2xF8NYSqdcEfKx',
+            callback: 'http://tshirthustle.com/twitter'
         }
     },
     pro: {
@@ -32,6 +42,11 @@ var config = {
             myAffiliateID : '1014588',
             APIToken : '10ecldpyOJEVk1za',
             APISecretKey : 'ENi0iz7z1ZBqnp3jIKi2ms2h5AYeqs1i'
+        },
+        twitter :{
+            consumerKey: 'wdaBHumoamxEdAjAmEc4KYo8N',
+            consumerSecret: '6zu64D3Lg0EGPxnhyj5OxMuHX6wzQAFWW9US2xF8NYSqdcEfKx',
+            callback: 'http://tshirthustle.com/twitter'
         }
     },
     admin: {

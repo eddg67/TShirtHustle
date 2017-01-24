@@ -15,14 +15,15 @@ var http = require('http'),
     search = require('./routes/search'),
     index = require('./routes/index'),
     store = require('./routes/store'),
+    token = require('./routes/token'),
     expressMongoDb = require('express-mongo-db'),
     
     config = require('./config')();
 
 
     var ejs = require('ejs');
-ejs.open = '{{';
-ejs.close = '}}';
+    ejs.open = '{{';
+    ejs.close = '}}';
 
  var items;
  var lastItemId=0;
@@ -70,6 +71,10 @@ var baseHost = createVirtualHost(config.host, 'public_html');
 
         app.get('/search',search.index);
         app.get('/search/:id',search.index);
+
+        app.get('/signin/request-token',token.getRequestToken);
+        app.get('/signin/access-Token',token.getAccessToken);
+        app.get('/twitter',token.getAccessToken);
 
         //API Routes 
         app.get('/api/cat',api.catergories);
