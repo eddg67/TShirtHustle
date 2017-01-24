@@ -19,6 +19,8 @@ exports.getAccessToken = function (req, res)  {
    var token = req.query.oauth_token,
 			verifier = req.query.oauth_verifier;
          twitter.accessToken(token, verifier).then(function(accessToken,accessSecret) {
+             console.log(accessToken)
+             console.log(accessSecret)
              twitter.verifyCredentials(accessToken, accessSecret, function(err, user) {
                     if (err)
                         res.status(500).send(err);
