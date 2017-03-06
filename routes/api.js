@@ -4,6 +4,10 @@
      var pageLimit = 48;
      var items,key,skip,pg;
 
+     function random (low, high) {
+    return Math.floor(Math.random() * (high - low + 1) + low);
+  }
+
 
      exports.contact = function (req, res) {
         var MongoClient = require('mongodb').MongoClient;
@@ -39,7 +43,10 @@
 
     exports.products = function (req, res, next) {
         pg = req.param("page");
-        skip = pg > 1 ? pageLimit * (pg-1) : 0; 
+        var low = random(0,10);
+        var high = random(low,20);
+        skip = pg > 1 ? pageLimit * (pg-1) : 0;
+        skip = !skip ?  random(low,high) : skip;
         //req.db = db;
        var el = req.db.collection('products')
                 .find({ $and:[
@@ -51,7 +58,6 @@
                   ]}  
                   ]} )
                 .skip(skip).limit(pageLimit)
-               // .sort({"Organization":1})
                 .toArray(function(err, items) {
                        lastItemId = items[items.length-1];
                         res.send(items);
