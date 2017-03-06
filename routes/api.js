@@ -44,7 +44,7 @@
        var el = req.db.collection('products')
                 .find({ $and:[{"Big Image":{$ne:""}},{"Name":new RegExp("T Shirt", 'i')}]} )
                 .skip(skip).limit(pageLimit)
-                .sort({"Organization":1})
+               // .sort({"Organization":1})
                 .toArray(function(err, items) {
                        lastItemId = items[items.length-1];
                         res.send(items);
