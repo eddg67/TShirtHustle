@@ -39,10 +39,17 @@
 
     exports.products = function (req, res, next) {
         pg = req.param("page");
-        skip = pg > 1 ? pageLimit * (pg-1) : 0;
+        skip = pg > 1 ? pageLimit * (pg-1) : 0; 
         //req.db = db;
        var el = req.db.collection('products')
-                .find({ $and:[{"Big Image":{$ne:""}},{"Name":new RegExp("T Shirt", 'i')}]} )
+                .find({ $and:[
+                  {"Big Image":{$ne:""}},
+                  {$or:[
+                    {"Name":new RegExp("T Shirt", 'i')},
+                    {"Name":new RegExp("TShirt", 'i')},
+                    {"Name":new RegExp("Tee", 'i')},
+                  ]}  
+                  ]} )
                 .skip(skip).limit(pageLimit)
                // .sort({"Organization":1})
                 .toArray(function(err, items) {
