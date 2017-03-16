@@ -40,6 +40,7 @@
                 var list = [];
                 var rowCount = !count ? defaultCount : count;
                    while(raw.length) {
+                       console.log(raw.splice(0,rowCount));
                       list.push(raw.splice(0,rowCount));
                 }
                   return list;

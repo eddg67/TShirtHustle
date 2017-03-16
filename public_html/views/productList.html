@@ -14,9 +14,9 @@
 
                                 <!--Card image-->
                                 <div class="view overlay hm-white-slight">
-                                    <img src="{{ item['Big Image'] }}" class="img-fluid" alt="">
+                                    <img src="{{ item['_id']['Big Image'] }}" class="img-fluid" alt="">
 
-                                    <a target="_blank" href="/detail/{{ item.productId }}"> 
+                                    <a target="_blank" href="/detail/{{ item['_id'].productId }}"> 
                                         <div class="mask"></div>
                                     </a>
                                 </div>
@@ -25,10 +25,10 @@
                                 <!--Card content-->
                                 <div class="card-block">
                                     <!--Title-->
-                                    <h4 class="card-title">{{ item.Name }}</h4>
+                                    <h4 class="card-title">{{ item['_id'].Name }}</h4>
                                     <!--Text-->
-                                    <p class="card-text">{{ item['Short Description']  }}</p>
-                                      <a class="btn btn-primary" href="{{ item.Link}}"> 
+                                    <p class="card-text">{{ item['_id']['Short Description']  }}</p>
+                                      <a class="btn btn-primary" href="{{ item['_id'].Link}}"> 
                                         Buy now 
                                     </a>
                                 </div>

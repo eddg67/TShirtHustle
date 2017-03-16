@@ -22155,6 +22155,7 @@ $routeProvider.
                 var list = [];
                 var rowCount = !count ? defaultCount : count;
                    while(raw.length) {
+                       console.log(raw.splice(0,rowCount));
                       list.push(raw.splice(0,rowCount));
                 }
                   return list;
@@ -22358,6 +22359,7 @@ function productCtrl($log,apiService){
               .success(function(response) {
                     apiService.fetching = false;
                     console.log($log)
+                     console.log(response)
                     _self.productList = apiService.parse(response,3);
                   }
               );

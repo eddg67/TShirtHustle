@@ -40,6 +40,7 @@ function productCtrl($log,apiService){
               .success(function(response) {
                     apiService.fetching = false;
                     console.log($log)
+                     console.log(response)
                     _self.productList = apiService.parse(response,3);
                   }
               );
