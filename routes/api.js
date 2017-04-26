@@ -5,8 +5,8 @@
      var items,key,skip,pg;
 
      function random (low, high) {
-    return Math.floor(Math.random() * (high - low + 1) + low);
-  }
+      return Math.floor(Math.random() * (high - low + 1) + low);
+    }
 
 
      exports.contact = function (req, res) {
@@ -60,7 +60,6 @@
           { $skip : skip },
           { $limit : pageLimit }
            ]).toArray(function(err, items) {
-                      console.log(items.length);
                        lastItemId = items[items.length-1];
                         res.send(items);
                 }); 

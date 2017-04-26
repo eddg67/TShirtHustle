@@ -22354,17 +22354,12 @@ function productCtrl($log,apiService){
         apiService.fetch("/api/products",_self.page)
               .success(function(response) {
                     apiService.fetching = false;
-                    console.log($log)
-                     console.log(response)
                     _self.productList = apiService.parse(response,3);
                   }
               );
     }
 
 }
-
-
-
 })();
 
 
