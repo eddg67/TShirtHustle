@@ -48,32 +48,24 @@
         skip = pg > 1 ? pageLimit * (pg-1) : 0;
         skip = !skip ?  random(low,high) : skip;
 
-
        var el = req.db.collection('products').aggregate([ 
-          { $match:{ $and:[{"Big Image":{$ne:""}},{ $or:[{"Name":/T Shirt/},{"Name":/TShirt/},{"Name":/Tee/} ] }]  }}, 
+          { $match:{ $and:[
+            {"Big Image":{$ne:""}},
+            { $or:
+              [{"Name":/T Shirt/i},{"Name":/T-Shirt/i},{"Name":/TShirt/i},{"Name":/Tee/i} ] 
+            }
+            ]  }}, 
           { $group: { _id: { Name:'$Name',productId:'$productId','Big Image':'$Big Image',Link:'$Link','Short Description':'$Short Description' },count: { $sum:  1 } } },
-          { $match: { count: { $lt : 2 } }} ]).skip(skip).limit(pageLimit)
-                .toArray(function(err, items) {
+          { $match: { count: { $lt : 2 } }},
+          { $skip : skip },
+          { $limit : pageLimit }
+           ]).toArray(function(err, items) {
+                      console.log(items.length);
                        lastItemId = items[items.length-1];
                         res.send(items);
                 }); 
-     /* 
-     var el = req.db.collection('products')
-                .find({ $and:[
-                  {"Big Image":{$ne:""}},
-                  {$or:[
-                    {"Name":new RegExp("T Shirt", 'i')},
-                    {"Name":new RegExp("TShirt", 'i')},
-                    {"Name":new RegExp("Tee", 'i')},
-                  ]}  
-                  ]} )
-                .skip(skip).limit(pageLimit)
-                .toArray(function(err, items) {
-                       lastItemId = items[items.length-1];
-                        res.send(items);
-                });
-                
-                */
+
+            
        };
 
     exports.search = function(req, res, next) {
@@ -116,23 +108,16 @@
                       lastItemId = items[items.length-1];
                        res.send(items);
                   });
-
-
-
     };
 
     exports.detail = function(req, res){
         key = req.param("id");
-
         var el = req.db.collection('products').find(
-                     {
-                          'productId': key
-
-                     }).limit(1)
+                     {'productId': key})
+                     .limit(1)
                      .toArray(function(err, items) {
-  
-                           res.send(items[0]);
-                        });
+                      res.send(items[0]);
+            });
 
 
 

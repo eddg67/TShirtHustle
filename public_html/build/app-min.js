@@ -22117,7 +22117,6 @@ $routeProvider.
 
 'use strict';
 
-
     angular.module('myApp.apiService', [])
            .service('apiService',apiService);
 
@@ -22155,7 +22154,6 @@ $routeProvider.
                 var list = [];
                 var rowCount = !count ? defaultCount : count;
                    while(raw.length) {
-                       console.log(raw.splice(0,rowCount));
                       list.push(raw.splice(0,rowCount));
                 }
                   return list;
@@ -22321,8 +22319,6 @@ function pageCtrl($log){
 (function(){
 
 'use strict';
-
-
 angular.module('myApp.productCtrl', [])
 .controller('productCtrl', productCtrl);
 
